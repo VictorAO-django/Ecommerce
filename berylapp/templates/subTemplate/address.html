@@ -1,0 +1,48 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Account Address / Location {% endblock title %}
+
+{% block frame %}
+    <section id="address"><!--CSS-- User Adress -->
+        <section id="addressPart-1"><!--CSS-- Adress Part 1 -->
+            {% if AddressExist %}
+                {% for address in Address %}
+                <div><!--CSS-- Address Container -->
+                    <div id="addressDetail"><!--CSS-- Address Detail -->
+                        <p id="addressState">State <span name="displayState">------------</span></p>
+                        <p id="addressTown">Location <span name="displayLocation">------------</span></p>
+                        <p id="deliveryPoint">Delivery Point <span name="displayPoint">------------</span></p>
+                    </div>
+                    <div id="addressEffect">
+                        <a id="deleteAdrress" name="addressText"><img src="{% static 'deleteAddress.png' %}">Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div id="emptyCart">
+                    <figure>
+                        <img src="{% static 'no_address.png' %}">
+                    </figure>
+                    <p>Your haven't add any Address yet!</p>
+                    <p>You need to add one or two or more adddress prior to your location.<br> Click on the button to add an Address now.</p>
+                </div>
+            {% endif %}
+        </section>
+        <section id="addressPart-2">
+            <form id="mainAddAdressForm" method="POST">
+                <textarea id="mainFormInput" name="Address" style="display: none;"></textarea>
+                <a id="addNewAddress" onclick="saveAddress()" style="display: none;">ADD</a>
+                {% csrf_token %}
+            </form>
+            <a id="addAddress" onclick="address('addressPart-2','addAddress')"><img src="{% static 'increase.png' %}">ADD ADDRESS</a>
+        </section>
+    </section>
+    <p id="CSRF">{% csrf_token %}</p>
+
+    {% for address in Address%}
+        <input type="hidden" name="addressValue" value="{{ address }}">
+    {% endfor %}
+    <input type="hidden" value="{{ TotalAddress }}" id="TotalAddress">
+
+{% endblock frame %}

@@ -1,0 +1,130 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Beryl Account Settings {% endblock title %}
+
+{% block frame %}
+    <section id="settings"><!--CSS-- Account Setting --> 
+        <section id="settings_part1"><!--CSS-- Account Setting Part1-->
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                First Name<br>
+                <span>{% if detail %} {{ detail.Firstname }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
+                <a id="settingEdit" onclick="showSettingForm('firstname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+            </p>
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                Last Name<br>
+                <span>{% if detail %} {{ detail.Lastname }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
+                <a id="settingEdit" onclick="showSettingForm('lastname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+            </p>
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                Username<br>
+                <span>{{ user.username }}</span><!--CSS-- Detail Value -->
+            </p>
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                Gender<br>
+                <span>{% if detail %} {{ detail.get_Gender_display }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
+                <a id="settingEdit" onclick="showSettingForm('gender')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+            </p>
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                Email<br>
+                <span>{% if detail %} {{ detail.Email }} {% else %} --------- {% endif %}</span>
+                <a id="settingEdit" onclick="showSettingForm('email')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+            </p>
+            <p id="userdetails"><!--CSS-- Setting detail-->
+                Phone Number<br>
+                <span>{% if detail %} {{ detail.Phonenumber }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
+                <a id="settingEdit" onclick="showSettingForm('phone')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+            </p>
+            <div id="settingOption"><!--CSS-- Overall Setting container -->
+                <a onclick="showSettingForm('all')"><img src="{% static 'edit.png' %}">Edit All</a><!--CSS-- Overall Setting edit-->
+            </div>
+        </section>
+
+        <section id="settings_part2"><!--CSS-- Account Setting Part2-->
+            <form method="POST" id="settingForm"><!--CSS-- Account Setting form-->
+                {% if detail %}
+                    <p id="firstname"><!--CSS-- Account Setting Para-->
+                        <label>First Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Firstname" required value="{{ detail.Firstname }}" maxlength="20" placeholder="firstname">
+                    </p>
+                    <p id="lastname"><!--CSS-- Account Setting Para-->
+                        <label>Last Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Lastname" required value="{{ detail.Lastname }}" maxlength="20" placeholder="lastname">
+                    </p>
+                    <p id="username"><!--CSS-- Account Setting Para-->
+                        <label>User Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Username" value="{{ user.username }}" placeholder="username">
+                    </p>
+                    <p id="gender"><!--CSS-- Account Setting Para-->
+                        <label>Gender</label><!--CSS-- Account Setting label-->
+                        {% if detail.Gender == 'M' %}
+                        <select name="Gender" required id="id_Gender">
+                            <option value="">---------</option>
+                            <option value="M" selected>Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                        {% else %}
+                            {% if detail.Gender == 'F' %}
+                                <select name="Gender" required id="id_Gender">
+                                    <option value="">---------</option>
+                                    <option value="M">Male</option>
+                                    <option value="F" selected>Female</option>
+                                </select>
+                            {% else %}
+                                <select name="Gender" required id="id_Gender">
+                                    <option value="">---------</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                    <p id="email"><!--CSS-- Account Setting Para-->
+                        <label>Email</label><!--CSS-- Account Setting label-->
+                        <input type="email" name="Email" value="{{ detail.Email }}" maxlength="254" placeholder="email">
+                    </p>
+                    <p id="phone"><!--CSS-- Account Setting Para-->
+                        <label>Phone</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Phonenumber" value="{{ detail.Phonenumber }}" maxlength="15" placeholder="phone">
+                    </p>
+                    {% csrf_token %}
+                    <input type="submit" value="SAVE CHANGES" id="settingSave"><!--CSS-- Account Setting submit-->
+
+                {% else %}
+
+                    <p id="firstname"><!--CSS-- Account Setting Para-->
+                        <label>First Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Firstname" maxlength="20" placeholder="firstname">
+                    </p>
+                    <p id="lastname"><!--CSS-- Account Setting Para-->
+                        <label>Last Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Lastname" maxlength="20" placeholder="lastname">
+                    </p>
+                    <p id="username"><!--CSS-- Account Setting Para-->
+                        <label>User Name</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Username" value="{{ user.username }}" placeholder="username">
+                    </p>
+                    <p id="gender"><!--CSS-- Account Setting Para-->
+                        <label>Gender</label><!--CSS-- Account Setting label-->
+                        <select name="Gender" required id="id_Gender">
+                            <option value="">---------</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </p>
+                    <p id="email"><!--CSS-- Account Setting Para-->
+                        <label>Email</label><!--CSS-- Account Setting label-->
+                        <input type="email" name="Email" maxlength="254" placeholder="email">
+                    </p>
+                    <p id="phone"><!--CSS-- Account Setting Para-->
+                        <label>Phone</label><!--CSS-- Account Setting label-->
+                        <input type="text" name="Phonenumber" maxlength="15" placeholder="phone">
+                    </p>
+                    {% csrf_token %}
+                    <input type="submit" value="SAVE CHANGES" id="settingSave"><!--CSS-- Account Setting submit-->
+                {% endif %}
+                
+            </form>
+        </section>
+    </section>
+{% endblock frame %}

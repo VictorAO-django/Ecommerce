@@ -1,0 +1,53 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Beryl Cart Item {% endblock title %}
+
+{% block frame %}
+    <section id="shoppingCart"><!--CSS-- Cart Container -->
+        <section id="cartPart-1"><!--CSS-- Cart Container 1 -->
+            {% if itemExist %}
+                {% for item in savedItem %}
+                    <div id="cartItem"><!--CSS-- Cart Item Container -->
+                        <div><!--CSS-- Cart Item Detail Container-->
+                            <figure id="itemImg"><!--CSS-- Cart Item figure-->
+                                <img src="{{item.picture}}"><!--CSS-- Cart Item image-->
+                            </figure>
+                            <p id="itemPrice">{{item.price}}.00NGN</p><!--CSS-- Cart Item price-->
+                            <p id="itemPriceToSell">{{item.price_to_sell}}.00NGN</p><!--CSS-- Cart Item price-->
+                        </div>
+
+                        <div><!--CSS-- Cart Item Edit-->
+                            <p id="itemDescription">{{item.description}}</p><!--CSS-- Cart Item description-->
+                            <p id="itemNotice"><!--CSS-- Cart Item notice-->
+                                <img src="{% static 'notice.png' %}">
+                                {{item.notice}}
+                            </p>
+                            <div id="removesaved"><!--CSS-- Cart Item Remove Container-->
+                                <a href="javascript:saveItem('{{item.product_code}}','delete')"><!--CSS-- Cart Item Remove Anchor-->
+                                    <img src="{% static 'remove.png' %}"><!--CSS-- Cart Item Remove Icon-->
+                                    DELETE
+                                </a>
+                                <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Cart Item Remove Anchor-->
+                                    <img src="{% static 'add Cart.png' %}"><!--CSS-- Cart Item Remove Icon-->
+                                    VIEW
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div id="emptyCart">
+                    <figure>
+                        <img src="{% static 'no_favourite.png' %}">
+                    </figure>
+                    <p>Your haven't saved any item yet!</p>
+                    <p>Found something you like? Tap the heart shaped 'save item' icon <br> to add it to your wishlist! <br>All your saved item will appear here.</p>
+                    <a href="/">CONTINUE SHOPPING</a>
+                </div>
+            {% endif %}
+        </section>
+    </section>
+
+    <input id="saveditems" value="{{ saveditems }}" type="hidden"><!--This piece of data is for saved items-->
+{% endblock frame%}

@@ -1,0 +1,83 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Beryl Cart Item {% endblock title %}
+
+{% block frame %}
+    <section id="shoppingCart"><!--CSS-- Cart Container -->
+        <section id="cartPart-1"><!--CSS-- Cart Container 1 -->
+            {% if Cartexist %}
+                {% for item in Cart %}
+                    <div id="cartItem"><!--CSS-- Cart Item Container -->
+                        <div><!--CSS-- Cart Item Detail Container-->
+                            <figure id="itemImg"><!--CSS-- Cart Item figure-->
+                                <img src="{{item.0.picture}}"><!--CSS-- Cart Item image-->
+                            </figure>
+                            <p id="itemPrice">{{item.0.price}}.00NGN</p><!--CSS-- Cart Item price-->
+                            <p id="itemPriceToSell">{{item.0.price_to_sell}}.00NGN</p><!--CSS-- Cart Item price-->
+                        </div>
+
+                        <div><!--CSS-- Cart Item Edit-->
+                            <p id="itemDescription">{{item.0.description}}</p><!--CSS-- Cart Item description-->
+                            <p id="itemNotice"><!--CSS-- Cart Item notice-->
+                                <img src="{% static 'notice.png' %}">
+                                {{item.0.notice}}
+                            </p>
+                            <div id="quantityContainer"><!--CSS-- Cart Item Quantity Container-->
+                                <a id="quantity" onclick="DecreaseQuantity('{{item.0.product_code}}')"><!--CSS-- Cart Item Quantity Increase-->
+                                    <img src="{% static 'decrease.png' %}"><!--CSS-- Cart Item Quantity Regulator Icon-->
+                                </a>
+                                <p id="quantityNumber" class="{{item.0.product_code}}">{{item.1}}</p><!--CSS-- Cart Item Quantity-->
+                                <a id="quantity" onclick="IncreaseQuantity('{{item.0.product_code}}')"><!--CSS-- Cart Item Quantity Decrease-->
+                                    <img src="{% static 'increase.png' %}"><!--CSS-- Cart Item Quantity Regulator Icon-->
+                                </a>
+                            </div>
+                            <div id="removeContainer"><!--CSS-- Cart Item Remove Container-->
+                                <img src="{% static 'remove.png' %}"><!--CSS-- Cart Item Remove Icon-->
+                                <a onclick="RemoveCart('{{item.0.product_code}}')">REMOVE</a><!--CSS-- Cart Item Remove Anchor-->
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div id="emptyCart">
+                    <figure>
+                        <img src="{% static 'emptycart.png' %}">
+                    </figure>
+                    <p>Your cart is empty!</p>
+                    <p>Browse our categories and discover our best deals!</p>
+                    <a href="/">START SHOPPING</a>
+                </div>
+            {% endif %}
+        </section>
+
+        <section id="cartPart-2"><!--CSS-- Cart Container 2 -->
+            {% if Cartexist %}
+            <p id="checkoutText"><!--CSS-- Checkout statement -->
+                checkout to proceed to make payment 
+            </p>
+            <div id="checkout"><!--CSS-- Checkout Container -->
+                {% if user.is_authenticated %}
+                <img src="{% static 'checkout.png' %}"><!--CSS-- Checkout Icon -->
+                <a id="checkoutPrice" onclick="checkout()">CHECKOUT</a><!--CSS-- Checkout Anchor -->
+                <form method="POST" id="checkoutform" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                    <input type="hidden" name="public_key" value="FLWPUBK_TEST-1818fea94138a45ff41c9d7a5d7572a2-X">
+                    <input type="hidden" name="customer[email]" value="ayomideolusola5002@gmail.com">
+                    <input type="hidden" name="customer[name]" value="{{ user.username }}">
+                    <input type="hidden" name="tx_ref" value="ayisnbj-23">
+                    <input type="hidden" name="amount" value="3400">
+                    <input type="hidden" name="currency" value="NGN">
+                    <input type="hidden" name="meta[phone]" value="07063475466">
+                    <input type="hidden" name="redirect_url" value="http://128.0.0.1:8000/">
+                </form>
+
+                {% else %}
+
+                <img src="{% static 'checkout.png' %}"><!--CSS-- Checkout Icon -->
+                <a id="checkoutPrice" onclick="alertUser('error','You must be logged in.')">CHECKOUT</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </section>
+    </section>
+{% endblock frame%}

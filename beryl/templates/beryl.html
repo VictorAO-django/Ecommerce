@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> {% block title %} {% endblock title %}</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Ayomide Olusola">
+        <meta name="description" content="An Ecommerce Project designed by Olusola Ayomide Victor -- A FullStack Web Developer. This e-commerce site is written in Html&css, Javascript, and Django. This website is mainly created to backup his application CV and to impress the Hiring Managers.">
+        <meta name="keyword" content="FullStack Web Developer,Web Development Project,html,css,javascript, Web Developer, Ecommerce Site, e-commerce website, web developer, web development, django Ecommerce, django, python, portfolio, Ecommerce portfolio, e-commerce portfolio">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta name="theme-color" content="#121212">
+        <meta name="robot" content="nofollow">
+        <meta http-equiv="author" content="Victor A.O">
+        <meta http-equiv="pragma" content="no-cache">
+
+        <link rel="stylesheet" href="{% static 'CSS/beryl.css' %}">
+        <script src="{% static 'javascript/beryl.js' %}" role="application"></script>
+        <script src="{% static 'javascript/address.js' %}" role="application"></script>
+        <script src="{% static 'javascript/cart.js' %}" role=""></script>
+    </head>
+    <body>
+        <div id="navigation"> <!--CSS-- Top Navigation Container-->
+
+            <p id="name">Beryl <span>Store</span></p> <!--CSS-- Brand Name-->
+
+            <nav><!--CSS-- Top Navigation Nav-->
+
+                <ul id="topNav"><!--CSS-- Top Navigation Ul-->
+                    {% if user.is_authenticated %}
+                    {% else %}
+                        <li><!--CSS-- Top Nav Li-->
+                            <a href="{% url 'login' %}?next=/"  name="AboutUs">Login</a><!--CSS-- Top Nav Anchor-->
+                        </li>
+                    {% endif %}
+                    <li><!--CSS-- Top Nav Li-->
+                        <a href="javascript:checkWidth()"  name="AboutUs">About</a><!--CSS-- Top Nav Anchor-->
+                    </li>
+                    <li><!--CSS-- Top Nav Li-->
+                        <a href=""  name="contact">Contact</a><!--CSS-- Top Nav Anchor-->
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+        <div id="topImage"><!--CSS-- Top Img Container-->
+            <img src="{% static '20230626_123010.jpg' %}"><!--CSS-- Display Img-->
+            <img src="{% static '20230626_123504.jpg' %}"><!--CSS-- Display Img-->
+        </div>
+
+        <div id="navigation_2"><!--CSS-- Second Top Navigation -->
+            <div><!--CSS-- Brand Logo & Menu Container -->
+                <a id="menu"><!--CSS-- Menu anchor -->
+                    <img src="{% static 'menu.png' %}"><!--CSS-- Menu image -->
+                </a>
+                <a href="/"><!--CSS-- Brand Logo Image anchor-->
+                    <img src="{% static 'logo.png' %}"><!--CSS-- Brand Logo image -->
+                </a>
+            </div>
+
+            <p></p><!--CSS-- Blue design -->
+
+            <ul><!--CSS-- Second Navigation UL -->
+                {% if user.is_authenticated %}
+                    <input id="checkUser" type="hidden" value="Loggedin">
+                {% endif %}
+                <li><!--CSS-- Second Navigation LI -->
+                    <img src="{% static 'account.png' %}" id="navIcon"><!--CSS-- Second Navigation icon -->
+                    {% if user.is_authenticated %}
+                        <a href="javascript:" onfocus="void showPopOption('username','focus')" id="username">Hi,{{user.username}} </a><!--CSS-- Second Navigation anchor -->
+                    {% else %}
+                        <a href="javascript:" id="username">Hi,----------</a><!--CSS-- Second Navigation anchor -->
+                    {% endif %}
+                </li>
+                <li><!--CSS-- Second Navigation LI -->
+                    <img src="{% static 'location.png' %}" id="navIcon"><!--CSS-- Second Navigation icon -->
+                    <a href="/address">Address</a><!--CSS-- Second Navigation anchor -->
+                </li>
+                <li><!--CSS-- Second Navigation LI -->
+                    <img src="{% static 'shoppingCart.png' %}" id="navIcon"><!--CSS-- Second Navigation icon -->
+                    <a href="/cart">Cart</a><!--CSS-- Second Navigation anchor -->
+                    <span id="cartNumber">0</span><!--CSS-- cart item-->
+                </li>
+            </ul>
+        </div>
+
+        <section id="body"><!--CSS-- Page Main Body -->
+            <div id="sideBar"><!--CSS-- Page Side Bar -->
+                
+                <ul id="sideUl"><!--CSS-- Side UL -->
+                    <p> OUR CATEGORIES</p>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/supermarket1" class="sideLi"><!--CSS-- Side icon -->
+                            <img src="{% static 'supermarket.png' %}" id="sideIcon">
+                            Supermarket
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/fashion1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'fashion.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Fashion
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/phone_device1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'phone.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Phone & Device
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/mug1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'mug.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Mug Cup
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/cake1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'cake.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Cake
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/appliance1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'appliance.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Appliance
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/wine1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'wine.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Wine
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->  
+                        <a href="/utensil1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'utensil.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Utensil
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/book1" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'books.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Books
+                        </a>
+                    </li>
+
+                    <p>MY BERYL ACCOUNT</p>
+
+                    <li><!--CSS-- Side LI -->
+                        <a href="/settings" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'account.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Management
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/saveditems" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'saved_item.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Saved Items
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/recentlyViewed" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'recent_view.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Recently Viewed
+                        </a>
+                    </li>
+                    <li><!--CSS-- Side LI -->
+                        <a href="/history" class="sideLi"><!--CSS-- Side anchor -->
+                            <img src="{% static 'history.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                            Orders
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="frame"><!--CSS-- Page Main --> 
+                {% block frame %}
+                {% endblock frame %}
+            </div>
+        </section>
+
+        <div id="detailContainer">
+            <img src="{% static 'close.png' %}" id="closeView" onclick="showdetail('hide')">
+            <p id="productclass"> </p>
+            <figure id="productFigure">
+                <img id="productImage" src="">
+            </figure>
+            <div id="productDetail">
+                <p>
+                    Price
+                    <span id="price"> </span>
+                </p>
+                <p>
+                    Price To Sell
+                    <span id="priceToSell"> </span>
+                </p>
+                <p>
+                    Description
+                    <span id="description"> </span>
+                </p>
+            </div>
+            <div style="display: none;" id="quantityContainer"><!--CSS-- Cart Item Quantity Container-->
+                <a id="quantityDecrease"><!--CSS-- Cart Item Quantity Increase-->
+                    <img src="{% static 'decrease.png' %}"><!--CSS-- Cart Item Quantity Regulator Icon-->
+                </a>
+                <p id="quantityNumber">1</p><!--CSS-- Cart Item Quantity-->
+                <a id="quantityIncrease"><!--CSS-- Cart Item Quantity Decrease-->
+                    <img src="{% static 'increase.png' %}"><!--CSS-- Cart Item Quantity Regulator Icon-->
+                </a>
+            </div>
+            <div style="display: none;" id="removeContainer"><!--CSS-- Cart Item Remove Container-->
+                <img src="{% static 'remove.png' %}"><!--CSS-- Cart Item Remove Icon-->
+                <a id="removeFromCart">REMOVE</a><!--CSS-- Cart Item Remove Anchor-->
+            </div>
+            <a id="addToCart" href="">
+                <div id="addImgBox">
+                    <img id="addImg" src="{% static 'add Cart.png' %}">
+                </div>
+                <p id="addStatement">
+                    ADD TO CART
+                </p>
+            </a>
+            <a id="saveItem" href="">
+                <div id="saveImgBox">
+                    <img id="saveImg" src="{% static 'save_item.png' %}">
+                </div>
+                <p id="saveStatement">
+                    SAVE ITEM
+                </p>
+            </a>
+            <div id="notice">
+                <img src="{% static 'notice.png' %}">
+                <p id="noticeText"> </p>
+            </div>
+        </div>
+
+        <!--<footer>
+            <div id="mailUs">
+                <div>
+                    <img src="logo_white.png">
+                </div>
+                <form method="POST" validate="novalidate">
+                    <input name="email" placeholder="e.g example@gmail.com">
+                    <input name="message" placeholder="input your email">
+                    <p>
+                        <input type="submit" value="SEND"> 
+                        <input type="reset" value="RESET">
+                    </p>
+                </form>
+            </div>
+        </footer>-->
+    </body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'beryl.html' %}
+{% load static %}
+{% block frame %}
+<section id="history"><!--CSS-- History --> 
+    <div id="historyStatus"><!--CSS-- History detail--> 
+        <p id="checkoutDate">July 20,2023</p><!--CSS-- History Date--> 
+        <p id="statusSuccess">Successful</p><!--CSS-- History Status--> 
+    </div>
+
+    <div><!--CSS-- History Selected Item Container--> 
+        <div id="cartItems"><!--CSS-- History Selected Item--> 
+            <figure id="itemPics"><!--CSS-- History Selected Item Figure--> 
+                <img src="20230610_092219.jpg"><!--CSS-- History Selected Item Image--> 
+            </figure>
+            <figcaption id="itemClass">Supermarket</figcaption><!--CSS-- History Selected Item Caption--> 
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Cake</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Wine</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Mug Cup</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Appliance</figcaption>
+        </div>
+    </div>
+    <div><!--CSS-- History Total Detail--> 
+        <p id="historyPrice">Total 29000.00NGN</p><!--CSS-- History Total Price--> 
+        <a id="reCheckOut"><!--CSS-- History recheckout anchor--> 
+            <img src="{% static 'checkout.png' %}"><!--CSS-- History recheckout icon--> 
+            CHECKOUT
+        </a>
+    </div>
+</section>
+
+<section id="history">
+    <div id="historyStatus">
+        <p id="checkoutDate">July 20,2023</p>
+        <p id="statusFail">Failed</p>
+    </div>
+    <div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Supermarket</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Cake</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Wine</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Mug Cup</figcaption>
+        </div>
+        <div id="cartItems">
+            <figure id="itemPics">
+                <img src="20230610_092219.jpg">
+            </figure>
+            <figcaption id="itemClass">Appliance</figcaption>
+        </div>
+    </div>
+    <div>
+        <p id="historyPrice">Total 29000.00NGN</p>
+        <a id="reCheckOut"><img src="{% static 'checkout.png' %}">CHECKOUT</a>
+    </div>
+</section>
+{% endblock frame %}

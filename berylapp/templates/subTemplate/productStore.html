@@ -1,0 +1,34 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Beryl Collection {% endblock title %}
+
+{% block frame %}
+    <section id="product" class="{{ class }}"><!--CSS-- Product Container -->
+        <p id="productClass">{{ class }}</p><!--CSS-- Product Class Name -->
+        {% if Itemexist %}
+            <div id="product"><!--CSS-- Item Container -->
+                {% for item in storeItem %}
+                    <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Item detail anchor -->
+                        <img src="{{ item.picture.url }}"><!--CSS-- Item Image -->
+                        <figcaption><!--CSS-- Item Image caption -->
+                            {{ item.description }}
+                            <span id="priceTag">{{ item.price_to_sell }}.NGN</span><!--CSS-- Item price -->
+                        </figcaption>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div id="emptyCart">
+                <figure>
+                    <img src="{% static 'no_favourite.png' %}">
+                </figure>
+                <p>Your haven't viewed any item yet!</p>
+                <p>Found something you like? Click on it to add it to your recently viewed items! <br>All your recently viewed item will appear here.</p>
+                <a href="/">CONTINUE SHOPPING</a>
+            </div>
+        {% endif %} 
+    </section>
+    
+    <input id="saveditems" value="{{ saveditems }}" type="hidden"><!--This piece of data is for saved items-->
+{% endblock frame%}

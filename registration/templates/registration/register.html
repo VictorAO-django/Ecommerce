@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Registration</title>
+        <link href="{% static 'CSS/registration.css' %}" rel="stylesheet">
+        <script>
+            document.cookie('newuser')
+        </script>
+    </head>
+    <body>
+        <main>
+            <div id="logo">
+                <img src="{% static 'logo_head.png' %}">
+            </div>
+            <p id="firstStatement">Lets get started by creating your account</p>
+            <p id="secondStatement">To keep your account safe, we need a strong password and a unique username.</p>
+            <form method="post" action="">
+                {{ form.as_p }}
+                <input type="hidden" name="next" value="{{ next }}">
+                {% csrf_token %}
+                <input type="submit" value="Create">
+            </form>
+        </main>
+    </body>
+</html>

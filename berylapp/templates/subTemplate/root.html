@@ -1,0 +1,53 @@
+{% extends 'beryl.html' %}
+{% load static %}
+
+{% block title %} Beryl Collection {% endblock title %}
+
+{% block frame %}
+    <section id="product" class="fashion"><!--CSS-- Product Container -->
+        <p id="productClass">Fashion</p><!--CSS-- Product Class Name -->
+        <div id="product"><!--CSS-- Item Container -->
+            {% for item in FashionModel %}
+                <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Item detail anchor -->
+                    <img src="{{ item.picture.url }}"><!--CSS-- Item Image -->
+                    <figcaption><!--CSS-- Item Image caption -->
+                        {{ item.description }}
+                        <span id="priceTag">{{ item.price_to_sell }}.NGN</span><!--CSS-- Item price -->
+                    </figcaption>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="product" class="cake"><!--CSS-- Product Container -->
+        <p id="productClass">Cake</p><!--CSS-- Product Class Name -->
+        <div id="product"><!--CSS-- Item Container -->
+            {% for item in CakeModel %}
+                <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Item detail anchor -->
+                    <img src="{{ item.picture.url }}"><!--CSS-- Item Image -->
+                    <figcaption><!--CSS-- Item Image caption -->
+                        {{ item.description }}
+                        <span id="priceTag">{{ item.price_to_sell }}.NGN</span><!--CSS-- Item price -->
+                    </figcaption>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="product" class="book"><!--CSS-- Product Container -->
+        <p id="productClass">Book</p><!--CSS-- Product Class Name -->
+        <div id="product"><!--CSS-- Item Container -->
+            {% for item in BookModel %}
+                <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Item detail anchor -->
+                    <img src="{{ item.picture.url }}"><!--CSS-- Item Image -->
+                    <figcaption><!--CSS-- Item Image caption -->
+                        {{ item.description }}
+                        <span id="priceTag">{{ item.price_to_sell }}.NGN</span><!--CSS-- Item price -->
+                    </figcaption>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <input id="saveditems" value="{{ saveditems }}" type="hidden"><!--This piece of data is for saved items-->
+{% endblock frame%}
