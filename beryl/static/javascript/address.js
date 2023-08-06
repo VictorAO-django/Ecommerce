@@ -51,7 +51,7 @@ Point['aba'] = [
     ['Ariza Plaza Hotel Hall','70B,ikot-Ekpene Road,Ogor Hill']
 ]
 Point['umuahia'] = [
-    ['langen palace resort hall','129 Agunyi ironsi Layout'],
+    ['langen palace resort hall','129 Agnunyi ironsi Layout'],
     ['Pat Tona International Hall','Umu Obasi 440236'],
     ['Cocktail Hotel Hall','Mgbaja Ossah junction']
 ]
@@ -67,7 +67,18 @@ Point['nunmen'] = [
 Point['jimeta'] = [
     ['Bekaji Guest Inn Hall','24 Galadima Amunu Road']
 ]
-//+++++AKWA IBOM STATE+++++//
+//+++++EKITI  STATE+++++//
+Point['ado']=[
+    ['fajuyi park','around od garage']
+]
+Point['ikere']=[
+    []
+]
+Point['oye']=[
+    []
+]
+
+
 
 function inputIt(ID,oValue,oValue2){
     document.getElementsByName(ID)[0].value = oValue
