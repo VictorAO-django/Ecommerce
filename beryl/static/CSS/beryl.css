@@ -24,8 +24,8 @@ flex-flow: column;}
 
 a{text-decoration: none;}
 
-@media(min-width:1200px){
-    div[id='navigation']{display: flex;/*Top Navigation Container*/
+    
+div[id='navigation']{display: flex;/*Top Navigation Container*/
     height: 40px;
     padding: 2px 10px;
     align-items: center;
@@ -33,7 +33,7 @@ a{text-decoration: none;}
     filter: drop-shadow(0px 0px 2px #96969665);}
 
     p[id='name']{font-family: MontserratMedium;}/*Brand Name*/
-    p[id='name']>span{color: #FE9900;}/*Brand Name*/
+    p[id='name']>span{color: red;}/*Brand Name*/
 
     div[id='navigation']>nav{margin-left: auto;}/*Top Navigation Nav*/
 
@@ -50,7 +50,7 @@ a{text-decoration: none;}
     ul[id='topNav']>li>a:hover{color: #6AC1D5;}/*Top Nav Anchor*/
 
     div[id='topImage'],div[id='NewtopImage']{width: 100%;/*Top Img Container*/
-    height: 200px;
+    min-height: 200px;
     display: flex;
     padding: 0px;
     margin-top: -3px;
@@ -170,10 +170,10 @@ a{text-decoration: none;}
     display: flex;
     align-items: center;}
 
-
     div[id='frame']{flex-grow: 1;/*Page Main Frame*/
     margin-left: 6px;}
 
+@media(min-width:1200px){
     /*ROOT PAGE*/
     section[id='product']{background-color: #fff;/*Product Container*/
     margin: 0px 0px 15px 0px;
@@ -213,6 +213,17 @@ a{text-decoration: none;}
     span[id='priceTag']{display: block;/*Item price*/
     font-family: MontserratMedium;
     color: #b16d07;}
+
+    div[id='seemore']{height: 50px;
+    align-self: center;
+    margin:auto;
+    min-width: 50%;
+    font-family: MontserratRegular;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+    letter-spacing: 0.5px;}
     /*END ROOTPAGE*/
 
 
@@ -417,25 +428,36 @@ a{text-decoration: none;}
     font-size: 14px;}
     
     div[id='emptyCart']>a:hover{background-color: #d8870d;}
-    /*END CART PAGE*/
+    /*END CART PAGE*/    
+
+    /*ADDRESS*/
+    section[id='addressPart-1']{margin-left: 30px;/*Adress Part 1*/
+    padding-right: 50px;}
+
+    div[id='addressDetail']>p{font-family: MontserratMedium;
+    margin: 5px 0px;
+    padding: 3px 8px;
+    font-size: 14px;
+    min-width: 300px;
+    color: #121212b0;}
+
+    section[id='addressPart-2']{flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 1px solid #1212121e;
+    position: sticky;
+    top:100px;}
+    /*END ADDRESS*/
 }
 
-div[id='seemore']{height: 50px;
-align-self: center;
-min-width: 50%;
-margin: 0px 4px;
-font-family: MontserratRegular;
-display: flex;
-justify-content: space-around;
-align-items: center;
-font-size: 15px;
-letter-spacing: 0.5px;
-flex-basis: auto;
-margin: auto;}
+div[id='seemore']>a{color: #1212129d;
+text-align: center;}
 
-div[id='seemore']>a{color: #1212129d;}
-
-
+div[id='seemore']>a:hover{background-color: #3130300e;
+padding: 3px 3px;
+border-radius: 5px;}
 
 
 /*HISTORY*/
@@ -516,9 +538,6 @@ display: flex;
 flex-flow: row;
 align-items: flex-start;}
 
-section[id='addressPart-1']{margin-left: 30px;/*Adress Part 1*/
-padding-right: 50px;}
-
 section[id='addressPart-1']>div{display: flex;/*Address Container*/
 flex-flow: row nowrap;
 align-items: center;
@@ -530,13 +549,6 @@ flex-flow: column nowrap;}
 
 div[id='addressDetail']{display: flex;/*Address Detail*/
 flex-flow: column nowrap;}
-
-div[id='addressDetail']>p{font-family: MontserratMedium;
-margin: 5px 0px;
-padding: 3px 8px;
-font-size: 14px;
-min-width: 300px;
-color: #121212b0;}
 
 div[id='addressDetail']>p>span{font-family: MontserratRegular;
 display: block;
@@ -562,17 +574,9 @@ div[id='addressEffect']>a:hover{color: #FE9900;}
 div[id='addressEffect']>a>img{width: 20px;
 margin: 2px;}
 
-section[id='addressPart-2']{flex-grow: 1;
-display: flex;
-flex-flow: column;
-justify-content: space-around;
-align-items: center;
-border-left: 1px solid #1212121e;
-position: sticky;
-top:100px;}
 
 a[id='addAddress']{padding: 0px 0px;
-margin-top: 50px;
+margin: 50px 0px;
 background-color: #FE9900;
 display: flex;
 align-items: center;
@@ -581,9 +585,7 @@ justify-content: space-between;
 font-family: MontserratMedium;
 font-size: 13px;
 padding-right: 7px;
-cursor: pointer;
-position: sticky;
-top: 50px;}
+cursor: pointer;}
 
 a[id='addAddress']>img{width: 25px;
 background-color: #12121215;
