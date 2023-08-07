@@ -365,6 +365,9 @@ function saveItem(param,mode){
 }
 
 
+
+
+
 function checkout(){
     document.getElementById('checkoutform').submit()
 }
@@ -389,6 +392,15 @@ function decideDisplayImage(){
     }
 }
 
+
+function sideBar(mode){
+    var oMode = (mode == 'hide')? 'none' : 'flex';
+    document.getElementById('sideBar').style.display = oMode;
+    var newMode = (mode == 'hide')? 'show' : 'hide'
+    document.getElementById('menu').href = "javascript:sideBar('" + newMode +"')"
+}
+
+
 window.onload = function(){
     decideDisplayImage()
     switchImg()
@@ -405,8 +417,14 @@ window.onload = function(){
     if(document.cookie.indexOf('recentview') == -1){
         document.cookie = "recentview = "
     }
+
     displayAddress()
+
+    if(window.innerWidth > 768){
+        document.getElementById('menu').style.display = 'none';
+    }
 }
+
 window.onresize = function(){
     location.reload()
 }

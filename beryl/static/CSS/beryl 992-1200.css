@@ -1,9 +1,21 @@
     @media(min-width:992px) and (max-width:1200px){
+    section[id='body']{display: flex;/*Page Main Body*/
+    margin: 4px auto;
+    width: 96%;
+    filter: drop-shadow(0px 0px 1px #96969665);
+    align-items: stretch;}
+
+    div[id='sideBar']{border-radius: 5px;/*Page Side Bar*/
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #fff;}
+
     /*ROOT PAGE*/
     section[id='product']{background-color: #fff;/*Product Container*/
     margin: 0px 0px 15px 0px;
     border: 1px solid transparent;
     border-radius: 5px;
+    height: 240px;
     overflow: hidden;}
     
     p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
@@ -14,13 +26,14 @@
     text-transform: capitalize;}
     
     div[id='product']{display: flex;/*Item Container*/
-    flex-flow: row wrap;
-    justify-content: space-between;}
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    margin-top: 8px;}
     
-    div[id='product']>a{width: 150px;/*Item detail anchor*/
+    div[id='product']>a{min-width: 130px;/*Item detail anchor*/
     background-color: #fff;
     padding: 3px;
-    margin: 28px 5px;
+    margin: 15px 15px;
     border-radius: 3px;}
     
     div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
@@ -38,17 +51,6 @@
     span[id='priceTag']{display: block;/*Item price*/
     font-family: MontserratMedium;
     color: #b16d07;}
-
-    div[id='seemore']{height: 50px;
-    align-self: center;
-    margin:auto;
-    min-width: 50%;
-    font-family: MontserratRegular;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 14px;
-    letter-spacing: 0.5px;}
     /*END ROOTPAGE*/
 
 
@@ -258,6 +260,8 @@
     /*END CART PAGE*/
 
     /*ADDRESS*/
+    section[id='address']{flex-flow: row nowrap;}
+
     section[id='addressPart-1']{margin-left: 20px;/*Adress Part 1*/
     padding-right: 10px;}
 
@@ -285,11 +289,23 @@
 
 
     @media(min-width:768px) and (max-width:992px){
+    section[id='body']{display: flex;/*Page Main Body*/
+    margin: 4px auto;
+    width: 96%;
+    filter: drop-shadow(0px 0px 1px #96969665);
+    align-items: stretch;}
+
+    div[id='sideBar']{border-radius: 5px;/*Page Side Bar*/
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #fff;}
+
     /*ROOT PAGE*/
     section[id='product']{background-color: #fff;/*Product Container*/
     margin: 0px 0px 15px 0px;
     border: 1px solid transparent;
     border-radius: 5px;
+    height: 240px;
     overflow: hidden;}
     
     p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
@@ -300,13 +316,14 @@
     text-transform: capitalize;}
     
     div[id='product']{display: flex;/*Item Container*/
-    flex-flow: row wrap;
-    justify-content: space-between;}
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    margin-top: 8px;}
     
-    div[id='product']>a{width: 130px;/*Item detail anchor*/
+    div[id='product']>a{min-width: 130px;/*Item detail anchor*/
     background-color: #fff;
     padding: 3px;
-    margin: 15px 4px;
+    margin: 15px 15px;
     border-radius: 3px;}
     
     div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
@@ -324,18 +341,6 @@
     span[id='priceTag']{display: block;/*Item price*/
     font-family: MontserratMedium;
     color: #b16d07;}
-
-    div[id='seemore']{height: 50px;
-    align-self: center;
-    margin-right: 4px;
-    font-family: MontserratRegular;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    flex-basis: 140px;}
-
     /*END ROOTPAGE*/
 
     section[id='shoppingCart']{background-color: #fff;/*Cart Container*/
@@ -537,4 +542,90 @@
     
     div[id='emptyCart']>a:hover{background-color: #d8870d;}
     /*END CART PAGE*/
+
+    /*ADDRESS*/
+    section[id='address']{flex-flow: column nowrap;}
+
+    section[id='addressPart-1']{margin-left: 20px;/*Adress Part 1*/
+    padding-right: 10px;}
+
+    div[id='addressDetail']>p{font-family: MontserratMedium;
+    margin: 5px 0px;
+    padding: 3px 8px;
+    font-size: 14px;
+    min-width: 280px;
+    color: #121212b0;}
+
+    section[id='addressPart-2']{width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 1px solid #1212121e;}
+    /*END ADDRESS*/
+    }
+
+
+
+    @media(min-width:630px) and (max-width:768px){
+    /*ROOT PAGE*/
+    section[id='body']{display: flex;/*Page Main Body*/
+    margin: 7px auto;
+    width: 96%;
+    filter: drop-shadow(0px 0px 1px #96969665);
+    align-items: flex-start;}
+
+    div[id='sideBar']{border-radius: 5px;/*Page Side Bar*/
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    flex-shrink: 0;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 1px #49484875);
+    z-index: 10;}
+
+
+    /*ROOT PAGE*/
+    section[id='product']{background-color: #fff;/*Product Container*/
+    margin: 0px 0px 15px 0px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    height: 230px;
+    overflow: hidden;}
+    
+    p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
+    margin: 0px;
+    padding: 5px;
+    font-family: MontserratRegular;
+    font-size: 14px;
+    text-transform: capitalize;}
+    
+    div[id='product']{display: flex;/*Item Container*/
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    margin-top: 8px;}
+    
+    div[id='product']>a{min-width: 120px;/*Item detail anchor*/
+    background-color: #fff;
+    padding: 3px;
+    margin: 15px 15px;
+    border-radius: 3px;}
+    
+    div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
+    
+    div[id='product']>a>img{max-width: 100%;
+    border-radius: 3px;}/*Item Image*/
+    
+    figcaption{font-family: MontserratRegular;/*Item Image caption*/
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #121212;}
+    
+    span[id='priceTag']{display: block;/*Item price*/
+    font-family: MontserratMedium;
+    color: #b16d07;}
+    /*END ROOTPAGE*/
+
     }

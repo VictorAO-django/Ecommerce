@@ -94,11 +94,12 @@ function StateInputOption(oValue){
     }
     //++++++++++++ ID is use as a reference an object ++++++++++++
     var Elem = document.getElementsByName('state')[0].getBoundingClientRect()//+++get the coordinate of the 
+    //alert(Elem.y)
         //+++Element you want to assign a popup to
     var popContainer = document.createElement('div')//+++create New div element as a container
     popContainer.id = 'popContainer'//+++check Css 'POPOPTION CONTAINER' for neccesary style
-    popContainer.style.left = Elem.x +'px'//assign 'Elem' x coordinate
-    popContainer.style.top = 370 +'px'
+    popContainer.style.left = Elem.x + window.scrollX + 190 +'px'//assign 'Elem' x coordinate
+    popContainer.style.top = Elem.y + window.scrollY + 'px'
     for(var i = 0; i<validState.length; i++){//loop through the object Ooption attribute -- an array
         if(validState[i].indexOf(oValue) != -1){
             var theOPtion = document.createElement('a')//create New anchor Element
@@ -122,8 +123,8 @@ function LocationInputOption(stateValue){
         //+++Element you want to assign a popup to
     var popContainer = document.createElement('div')//+++create New div element as a container
     popContainer.id = 'popContainer'//+++check Css 'POPOPTION CONTAINER' for neccesary style
-    popContainer.style.left = Elem.x +'px'//assign 'Elem' x coordinate
-    popContainer.style.top = 410 +'px'
+    popContainer.style.left = Elem.x + window.scrollX + 190 +'px'//assign 'Elem' x coordinate
+    popContainer.style.top = Elem.y + window.scrollY + 'px'
     if(Town[stateValue]){
         for(var i = 0; i < Town[stateValue].length; i++){//loop through the object Ooption attribute -- an array
             var theOPtion = document.createElement('a')//create New anchor Element
@@ -147,8 +148,8 @@ function PointInputOption(townValue){
         //+++Element you want to assign a popup to
     var popContainer = document.createElement('div')//+++create New div element as a container
     popContainer.id = 'popContainer'//+++check Css 'POPOPTION CONTAINER' for neccesary style
-    popContainer.style.left = Elem.x +'px'//assign 'Elem' x coordinate
-    popContainer.style.top = 440 +'px'
+    popContainer.style.left = Elem.x + window.scrollX + 190 +'px'//assign 'Elem' x coordinate
+    popContainer.style.top = Elem.y + window.scrollY + 'px'
     if(Point[townValue]){
         for(var i = 0; i < Point[townValue].length; i++){//loop through the object Ooption attribute -- an array
             var theOPtion = document.createElement('a')//create New anchor Element
