@@ -5,7 +5,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function quantity(productCode){
     this.productCode = productCode || ' '; //Object attribute. The value is in form of 'boot-00001'
-
     //++++++++++++THIS METHOD IS TO INCREASE ITEM QUANTITY
     this.increase = function(){
         var COOKIES = document.cookie.split(';'); //We track the session cookie to find our cookie named 'cart'

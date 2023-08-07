@@ -151,6 +151,7 @@ function DetailView(OproductClass,OproductCode,Oimagesrc,Oprice,OpriceToSell,Ode
 
     this.hideDetail = function(){
         document.getElementById('OdetailContainer').id = 'detailContainer'
+        document.getElementById('detailContainer').style.left = window.innerWidth + 'px'
     }
 }
 
@@ -178,6 +179,7 @@ function showdetail(productClass,productCode,imgSrc,amount,amountToPay,descripti
             var detailContainer = document.getElementById('detailContainer') ? document.getElementById('detailContainer') : document.getElementById('OdetailContainer')
             if(document.getElementById('detailContainer')){
                 detailContainer.id = 'OdetailContainer'
+                document.getElementById('OdetailContainer').style.left = (window.innerWidth - 353) +'px';
             }
                 detailContainer.insertBefore(loading,detailContainer.firstChild)
                 T = setTimeout(showdetail,2000)
@@ -367,7 +369,28 @@ function checkout(){
     document.getElementById('checkoutform').submit()
 }
 
+function checkWidth(){alert(window.innerWidth)}
+
+function decideDisplayImage(){
+    var imageUrl1 = '/static/displayimage';
+    var imageUrl2 = 'px.jpg'
+    const banner1 = document.getElementById('banner1');
+    const banner2 = document.getElementById('banner2');
+    
+    if(window.innerWidth >= 1300 && window.innerWidth <1400){
+        banner1.src = imageUrl1 + 1300 + imageUrl2;
+        banner2.src = imageUrl1 + 1300 + imageUrl2;
+    }else if(window.innerWidth >= 1200 && window.innerWidth <1300){
+        banner1.src = imageUrl1 + 1200 + imageUrl2;
+        banner2.src = imageUrl1 + 1200 + imageUrl2;
+    }else if(window.innerWidth >= 1100 && window.innerWidth <1200){
+        banner1.src = imageUrl1 + 1100 + imageUrl2;
+        banner2.src = imageUrl1 + 1100 + imageUrl2;
+    }
+}
+
 window.onload = function(){
+    decideDisplayImage()
     switchImg()
     getCartIndex('cartindex')//this request the total count of items from the server
     if(document.getElementById('checkout')){//if the webpage is the site cartpage
@@ -375,6 +398,7 @@ window.onload = function(){
     }
 
     document.getElementById('detailContainer').style.height = window.innerHeight + 'px'
+    document.getElementById('detailContainer').style.left = window.innerWidth + 'px'
     if(document.cookie.indexOf('cart') == -1){
         document.cookie = "cart = "
     }
@@ -382,4 +406,7 @@ window.onload = function(){
         document.cookie = "recentview = "
     }
     displayAddress()
+}
+window.onresize = function(){
+    location.reload()
 }

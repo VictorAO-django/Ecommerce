@@ -127,6 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'beryl/static'),]
 
 MEDIA_ROOT = BASE_DIR/'products'
+MEDIA_URL = '/products/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

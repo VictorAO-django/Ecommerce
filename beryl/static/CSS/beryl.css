@@ -1,3 +1,5 @@
+@import url(beryl\ 992-1200.css);
+
 @font-face {
     font-family: 'MontserratRegular';
     src: url('fonts/Montserrat-Regular.ttf') format('truetype');
@@ -14,8 +16,6 @@
     font-family: 'MontserratThin';
     src: url('fonts/Montserrat-Thin.ttf') format('truetype')
 }
-
-@import url(beryl\ 992-1200.css);
 
 body{margin: 0px;
 background-color: #EFECF7;
@@ -173,50 +173,61 @@ a{text-decoration: none;}
 
     div[id='frame']{flex-grow: 1;/*Page Main Frame*/
     margin-left: 6px;}
+
+    /*ROOT PAGE*/
+    section[id='product']{background-color: #fff;/*Product Container*/
+    margin: 0px 0px 15px 0px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;}
+    
+    p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
+    margin: 0px;
+    padding: 5px;
+    font-family: MontserratRegular;
+    font-size: 14px;
+    text-transform: capitalize;}
+    
+    div[id='product']{display: flex;/*Item Container*/
+    flex-flow: row wrap;
+    justify-content: space-between;}
+    
+    div[id='product']>a{width: 150px;/*Item detail anchor*/
+    background-color: #fff;
+    padding: 3px;
+    margin: 28px 5px;
+    border-radius: 3px;}
+    
+    div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
+    
+    div[id='product']>a>img{max-width: 100%;
+    border-radius: 3px;}/*Item Image*/
+    
+    figcaption{font-family: MontserratRegular;/*Item Image caption*/
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #121212;}
+    
+    span[id='priceTag']{display: block;/*Item price*/
+    font-family: MontserratMedium;
+    color: #b16d07;}
+    /*END ROOTPAGE*/
 }
 
-/*ROOT PAGE*/
-section[id='product']{background-color: #fff;/*Product Container*/
-margin: 0px 0px 15px 0px;
-border: 1px solid transparent;
-border-radius: 5px;
-overflow: hidden;}
-
-p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
-margin: 0px;
-padding: 5px;
+div[id='seemore']{height: 50px;
+align-self: center;
+min-width: 50%;
+margin: 0px 4px;
 font-family: MontserratRegular;
-font-size: 14px;
-text-transform: capitalize;}
+display: flex;
+justify-content: space-around;
+align-items: center;
+font-size: 15px;
+letter-spacing: 0.5px;}
 
-div[id='product']{display: flex;/*Item Container*/
-flex-flow: row wrap;
-justify-content: flex-start;}
-
-div[id='product']>a{width: 150px;/*Item detail anchor*/
-background-color: #fff;
-padding: 3px;
-margin: 28px 28px;
-border-radius: 3px;}
-
-div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
-
-div[id='product']>a>img{max-width: 100%;}/*Item Image*/
-
-figcaption{font-family: MontserratRegular;/*Item Image caption*/
-font-size: 12px;
-white-space: nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
-color: #121212;}
-
-span[id='priceTag']{display: block;/*Item price*/
-font-family: MontserratMedium;
-color: #b16d07;}
-/*END ROOTPAGE*/
-
-
-
+div[id='seemore']>a{color: #1212129d;}
 
 /*CART PAGE*/
 section[id='shoppingCart']{background-color: #fff;/*Cart Container*/
@@ -722,7 +733,6 @@ font-size: 12px;}
 
 a[id='popOption']:hover{color: #6AC1D5;}/*POPOPTION ANCHOR*/
 
-
 div[id='detailContainer']{width: 350px;
 background-color: #fff;
 filter: drop-shadow(0px 0px 5px #969696a1);
@@ -734,8 +744,7 @@ overflow: hidden;
 transition-property: all;
 transition-delay: 0s;
 transition-duration: 0.3s;
-transform-style: linear;
-left :1370px;}
+transform-style: linear;}
 
 #OdetailContainer{width: 350px;
 background-color: #fff;
@@ -748,8 +757,7 @@ overflow: hidden;
 transition-property: all;
 transition-delay: 0s;
 transition-duration: 0.3s;
-transform-style: linear;
-left: 1015px;}
+transform-style: linear;}
 
 div[id='loading']{background-color: #12121215;
 position: absolute;
@@ -828,7 +836,7 @@ color: #fff;
 font-size: 14px;
 letter-spacing: 1px;}
 
-a[id='saveItem']{
+a[id='quantityContainerItem']{
 width: 28%;
 height: 30px;
 margin-top: 5px;
@@ -850,6 +858,18 @@ border-radius: 3px;
 overflow: hidden;
 cursor:pointer;
 color: #121212af;}
+
+a[id='saveItem']{
+width: 28%;
+height: 30px;
+margin-top: 5px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+border-radius: 3px;
+overflow: hidden;
+cursor:pointer;
+color: #121212;}
 
 a[id='saveItem']:hover{color: #121212c0;}
 
