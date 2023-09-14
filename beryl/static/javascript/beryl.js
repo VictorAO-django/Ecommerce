@@ -239,6 +239,7 @@ function showSettingForm(elemID){
         }
         settingTrail = true   
     }
+    document.getElementById('settings_part2').style.display = 'flex'
     document.getElementById('settingSave').style.display = 'flex'
 }
 //+++++++++++++++++++++++END SETTING APIS+++++++++++++++++++++++++++++//
@@ -279,22 +280,22 @@ function CustomAlert(message){
     }
 }
 
-var trail = true
+var alertusertrail = true
 
 function alertUser(mode,message){
     var obj = new CustomAlert(message)
-    if(trail){
+    if(alertusertrail){
         if(mode == 'success'){
             obj.ALERT()
         }else{
             obj.ERROR()
         }
         
-        trail=false
+        alertusertrail=false
         setTimeout(alertUser,2000)
     }else{
         obj.CLOSE()
-        trail = true
+        alertusertrail = true
     }
 }
 //+++++++++++++++++++++++ END CUSTOM ALERT +++++++++++++++++++++++++++++//
@@ -389,6 +390,21 @@ function decideDisplayImage(){
     }else if(window.innerWidth >= 1100 && window.innerWidth <1200){
         banner1.src = imageUrl1 + 1100 + imageUrl2;
         banner2.src = imageUrl1 + 1100 + imageUrl2;
+    }else if(window.innerWidth >= 1000 && window.innerWidth <1100){
+        banner1.src = imageUrl1 + 1000 + imageUrl2;
+        banner2.src = imageUrl1 + 1000 + imageUrl2;
+    }else if(window.innerWidth >= 850 && window.innerWidth <1000){
+        banner1.src = imageUrl1 + 900 + imageUrl2;
+        banner2.src = imageUrl1 + 900 + imageUrl2;
+    }else if(window.innerWidth >= 700 && window.innerWidth <850){
+        banner1.src = imageUrl1 + 800 + imageUrl2;
+        banner2.src = imageUrl1 + 800 + imageUrl2;
+    }else if(window.innerWidth >= 550 && window.innerWidth <700){
+        banner1.src = imageUrl1 + 700 + imageUrl2;
+        banner2.src = imageUrl1 + 700 + imageUrl2;
+    }else if(window.innerWidth >= 350 && window.innerWidth <550){
+        banner1.src = imageUrl1 + 500 + imageUrl2;
+        banner2.src = imageUrl1 + 500 + imageUrl2;
     }
 }
 
@@ -401,29 +417,30 @@ function sideBar(mode){
 }
 
 
-window.onload = function(){
-    decideDisplayImage()
-    switchImg()
-    getCartIndex('cartindex')//this request the total count of items from the server
-    if(document.getElementById('checkout')){//if the webpage is the site cartpage
-        getCartIndex('cartamount')//request the total price of items from the server
-    }
 
-    document.getElementById('detailContainer').style.height = window.innerHeight + 'px'
-    document.getElementById('detailContainer').style.left = window.innerWidth + 'px'
+
+
+document.addEventListener("DOMContentLoaded",function(){
     if(document.cookie.indexOf('cart') == -1){
         document.cookie = "cart = "
     }
     if(document.cookie.indexOf('recentview') == -1){
         document.cookie = "recentview = "
     }
+    
+    decideDisplayImage()
+    switchImg()
+    getCartIndex('cartindex')//this request the total count of items from the server
+
+    if(document.getElementById('checkout')){//if the webpage is the site cartpage
+        getCartIndex('cartamount')//request the total price of items from the server
+    }
+
+    document.getElementById('detailContainer').style.height = window.innerHeight + 'px'
+    document.getElementById('detailContainer').style.left = window.innerWidth + 'px'
 
     displayAddress()
-
-    if(window.innerWidth > 768){
-        document.getElementById('menu').style.display = 'none';
-    }
-}
+})
 
 window.onresize = function(){
     location.reload()

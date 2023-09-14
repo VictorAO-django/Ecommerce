@@ -236,20 +236,68 @@
             </div>
         </div>
 
-        <!--<footer>
-            <div id="mailUs">
-                <div>
-                    <img src="logo_white.png">
+        <footer>
+            <section>
+                <div id="mailUs">
+                    <div>
+                        <img src="{% static 'logo_white.png' %}">
+                    </div>
+                    <form method="POST" validate="novalidate">
+                        <p id="comment">Drop a comment</p>
+                        <input name="email" placeholder="e.g example@gmail.com">
+                        <input name="comment" placeholder="comment here">
+                        <p id="submitComment">
+                            <input type="submit" value="SEND"> 
+                            <input type="reset" value="RESET">
+                        </p>
+                    </form>
                 </div>
-                <form method="POST" validate="novalidate">
-                    <input name="email" placeholder="e.g example@gmail.com">
-                    <input name="message" placeholder="input your email">
-                    <p>
-                        <input type="submit" value="SEND"> 
-                        <input type="reset" value="RESET">
-                    </p>
-                </form>
-            </div>
-        </footer>-->
+
+                <div id="developerInfo">
+                    <section>
+                        <a href="javascript:"><img src="{% static 'developer2.png' %}" id="developerImg"></a>
+                        <div>
+                            <p><span>name</span>Olusola Ayomide Victor</p>
+                            <p><span>role</span>FullStack Web Developer</p>
+                            <div id="contacts">
+                                <a href="mailto:ayomideolusola5002@gmail.com"><img src="{% static 'email.png' %}" target="blank"></a>
+                                <a href="https://www.linkedin.com/in/victor-olusola-a59493276" target="blank"><img src="{% static 'linkedIn.png' %}"></a>
+                                <a href="https://wa.me/message/SZTQ2QSERWKEM1" target="blank"><img src="{% static 'WhatApp.png' %}"></a>
+                                <a href="https://www.facebook.com/ayomide.ologunleko" target="blank"><img src="{% static 'Facebook.png' %}"></a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            
+            <section>
+                <div id="footerThings">
+                    <div>
+                        <p>About Us</p>
+                        <p>Feedback</p>
+                        <p>Community</p>
+                    </div>
+                    <div>
+                        <p>Trust, Safety & Security</p>
+                        <p>Help & Support</p>
+                        <p>Beryl Foundation</p>
+                    </div>
+                    <div>
+                        <p>Terms of Service</p>
+                        <p>Privacy Policy</p>
+                        <p>Cookie Setting</p>
+                    </div>
+                    <div>
+                        <p>Accessibility</p>
+                        <p>Report a Product</p>
+                        <p>Cookie Policy</p>
+                    </div>
+                </div>
+                <div id="right">
+                    <p>&#169 All Right Reserved 2023 Beryl Store</p>
+                </div>
+            </section>
+            
+        </footer>
     </body>
 </html>
