@@ -14,34 +14,7 @@
             <p id="secondStatement">We just need you to fill in some details.</p>
 
             <form method="POST" id="settingForm"><!--CSS-- Account Setting form-->
-                <p id="firstname"><!--CSS-- Account Setting Para-->
-                    <label>First Name</label><!--CSS-- Account Setting label-->
-                    <input type="text" name="Firstname" maxlength="20">
-                </p>
-                <p id="lastname"><!--CSS-- Account Setting Para-->
-                    <label>Last Name</label><!--CSS-- Account Setting label-->
-                    <input type="text" name="Lastname" maxlength="20">
-                </p>
-                <p id="Username" style="display: none;"><!--CSS-- Account Setting Para-->
-                    <label>User Name</label><!--CSS-- Account Setting label-->
-                    <input type="text" value="{{ user.username }}" name="Username" maxlength="20">
-                </p>
-                <p id="gender"><!--CSS-- Account Setting Para-->
-                    <label>Gender</label><!--CSS-- Account Setting label-->
-                    <select name="Gender" id="id_Gender">
-                        <option value="">----------</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                    </select>
-                </p>
-                <p id="email"><!--CSS-- Account Setting Para-->
-                    <label>Email</label><!--CSS-- Account Setting label-->
-                    <input type="email" name="Email" maxlength="254"  
-                </p>
-                <p id="phone"><!--CSS-- Account Setting Para-->
-                    <label>Phone</label><!--CSS-- Account Setting label-->
-                    <input type="text" name="Phonenumber" maxlength="15">
-                </p>
+                {{ form.as_p }}
                 {% csrf_token %}
                 <input type="submit" value="SAVE" id="settingSave"><!--CSS-- Account Setting submit-->
             </form>

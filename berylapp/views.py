@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.http import JsonResponse,HttpResponseRedirect
 
 from .models import SupermarketModel,FashionModel,PhoneDeviceModel,MugModel,CakeModel,ApplianceModel,WineModel,UtensilModel,BookModel
-from registration.models import userDetail
-from .forms import userInfo
+from registration.models import userDetail,orders
+from .forms import userInfo,buyerOrder
 
 # Create your views here.
 
@@ -32,14 +33,14 @@ def rootPage(request):
 
 
     pre_context = { #THIS IS TO PROVIDE ACCESS TO EACH STORE IN THE DATABASE
-        #'SupermarketModel' : SupermarketModel,
+        'SupermarketModel' : SupermarketModel,
         'FashionModel' : FashionModel,
-        #'PhoneDeviceModel' : PhoneDeviceModel,
-        #'MugModel' : MugModel,
+        'PhoneDeviceModel' : PhoneDeviceModel,
+        'MugModel' : MugModel,
         'CakeModel' : CakeModel,
-        #'ApplianceModel' : ApplianceModel
-        #'WineModel' : WineModel
-        #'UtensilModel' : UtensilModel,
+        'ApplianceModel' : ApplianceModel,
+        'WineModel' : WineModel,
+        'UtensilModel' : UtensilModel,
         'BookModel' : BookModel,
     }
         
@@ -77,14 +78,14 @@ def productStore(request,store,pk):
         context['saveditems'] = previousSave
 
     pre_context = {
-        #'supermarket' : SupermarketModel,
+        'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        #'phone_device' : PhoneDeviceModel,
-        #'mug' : MugModel,
+        'phone_device' : PhoneDeviceModel,
+        'mug' : MugModel,
         'cake' : CakeModel,
-        #'appliance' : ApplianceModel
-        #'wine' : WineModel
-        #'utensil' : UtensilModel,
+        'appliance' : ApplianceModel,
+        'wine' : WineModel,
+        'utensil' : UtensilModel,
         'book' : BookModel,
     }
 
@@ -103,14 +104,14 @@ def shoppingCart(request):
     Exist = True
     
     pre_context = {
-        #'SupermarketModel' : SupermarketModel,
+        'SupermarketModel' : SupermarketModel,
         'fashion' : FashionModel,
-        #'PhoneDeviceModel' : PhoneDeviceModel,
-        #'MugModel' : MugModel.objects.all(),
+        'PhoneDeviceModel' : PhoneDeviceModel,
+        'MugModel' : MugModel.objects.all(),
         'cake' : CakeModel,
-        #'ApplianceModel' : ApplianceModel
-        #'WineModel' : WineModel
-        #'UtensilModel' : UtensilModel,
+        'ApplianceModel' : ApplianceModel,
+        'WineModel' : WineModel,
+        'UtensilModel' : UtensilModel,
         'book' : BookModel,
     }
     
@@ -126,10 +127,30 @@ def shoppingCart(request):
             newCart.append((pre_context[modelTrail[0]].objects.get(product_code=i[0]),i[1]))
     else:
         Exist = False
+
     context = {
         'Cart':newCart,
         'Cartexist':Exist,
     }
+
+    currentUser = User.objects.get(username=request.user.username)
+
+    if request.method == 'POST':
+        new_order = orders.objects.create(
+            relation=currentUser,
+            username=request.user.username,
+            items=request.POST['items'],
+            checkout_price = request.POST['checkout_price'],
+            address=request.POST['address'],
+        )
+        return HttpResponseRedirect('/history/')
+    else:
+        form = buyerOrder()
+        context['orderForm'] = form
+
+        stations = userDetail.objects.get(relation=currentUser).Address
+        if stations != "":
+            context['station'] = stations.split('#')
 
     return render(request,template,context)
 
@@ -229,14 +250,14 @@ def cartDetail(request):
     result = int(0)
     
     pre_context = {
-        #'SupermarketModel' : SupermarketModel,
+        'SupermarketModel' : SupermarketModel,
         'fashion' : FashionModel,
-        #'PhoneDeviceModel' : PhoneDeviceModel,
-        #'MugModel' : MugModel,
+        'PhoneDeviceModel' : PhoneDeviceModel,
+        'MugModel' : MugModel,
         'cake' : CakeModel,
-        #'ApplianceModel' : ApplianceModel
-        #'WineModel' : WineModel
-        #'UtensilModel' : UtensilModel,
+        'ApplianceModel' : ApplianceModel,
+        'WineModel' : WineModel,
+        'UtensilModel' : UtensilModel,
         'book' : BookModel,
     }
 
@@ -317,14 +338,14 @@ def savedItems(request):
         DETAIL = userDetail.objects.get(Username = request.user.username)
         savedItem = DETAIL.Saved    
         pre_context = {
-            #'SupermarketModel' : SupermarketModel,
+            'SupermarketModel' : SupermarketModel,
             'fashion' : FashionModel,
-            #'PhoneDeviceModel' : PhoneDeviceModel,
-            #'MugModel' : MugModel.objects.all(),
+            'PhoneDeviceModel' : PhoneDeviceModel,
+            'MugModel' : MugModel.objects.all(),
             'cake' : CakeModel,
-            #'ApplianceModel' : ApplianceModel
-            #'WineModel' : WineModel
-            #'UtensilModel' : UtensilModel,
+            'ApplianceModel' : ApplianceModel,
+            'WineModel' : WineModel,
+            'UtensilModel' : UtensilModel,
             'book' : BookModel,
         }
     
@@ -351,16 +372,17 @@ def recentlyViewed(request):
     RecentView = request.COOKIES['recentview']
     AllRecentView = []
     Exist = True
-    
+    check = False
+
     pre_context = {
-        #'SupermarketModel' : SupermarketModel,
+        'SupermarketModel' : SupermarketModel,
         'fashion' : FashionModel,
-        #'PhoneDeviceModel' : PhoneDeviceModel,
-        #'MugModel' : MugModel.objects.all(),
+        'PhoneDeviceModel' : PhoneDeviceModel,
+        'MugModel' : MugModel.objects.all(),
         'cake' : CakeModel,
-        #'ApplianceModel' : ApplianceModel
-        #'WineModel' : WineModel
-        #'UtensilModel' : UtensilModel,
+        'ApplianceModel' : ApplianceModel,
+        'WineModel' : WineModel,
+        'UtensilModel' : UtensilModel,
         'book' : BookModel,
     }
     
@@ -377,5 +399,17 @@ def recentlyViewed(request):
         'Itemexist':Exist,
         'class':'Recently Viewed'
     }
+
+    for i in userDetail.objects.all():
+        if i.Username == request.user.username:
+            check = True
+            break
+        else:
+            check = False
+
+    if check:
+        DETAIL = userDetail.objects.get(Username = request.user.username)
+        previousSave = DETAIL.Saved
+        context['saveditems'] = previousSave
 
     return render(request,template,context)

@@ -238,6 +238,19 @@ function toSelect(productCode){
         newrecentview.push(this.productCode); // then push the item to the newrecentview array too
         document.cookie = 'recentview='+newrecentview.toString(); //lastly replace the session cookie 'recentview' value with the string form of our newCart Array
     }
+
+
+    this.CartItems = function(){
+        var COOKIES = document.cookie.split(';'); //We track the session cookie to find our cookie named 'cart'
+        var cart;
+        for(var i=0; i<COOKIES.length; i++){
+            if(COOKIES[i].includes('cart')){ //if 'cart' is a substring of the cookie string 
+                var CARTCOLUMN = COOKIES[i].split('=');
+                cart = CARTCOLUMN[1]; //track the 'cart' value which is in form of "cake-00002(1),fashion-00001(2)"
+            }
+        }
+        return cart
+    }
 }
 
 

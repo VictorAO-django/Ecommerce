@@ -10,11 +10,11 @@ class UserDetail(admin.ModelAdmin):
     readonly = ('Username',)
 
 class orderAdmin(admin.ModelAdmin):
-    search_fields = ('status',)
-    list_display = ('Username','date','checkoutprice','status')
-    list_filter = ('date','status')
+    search_fields = ('status','relation')
+    list_display = ('relation','unique_id','checkout_price','status')
+    list_filter = ('date','status','relation')
     ordering = ('status',)
-    readonly = ('checkoutprice','date','items','Username','Address')
+    readonly = ('checkout_price','date','items','address')
 
 admin.site.register(userDetail,UserDetail)
 admin.site.register(orders,orderAdmin)

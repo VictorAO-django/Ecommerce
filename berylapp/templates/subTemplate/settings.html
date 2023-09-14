@@ -42,6 +42,7 @@
 
         <section id="settings_part2"><!--CSS-- Account Setting Part2-->
             <form method="POST" id="settingForm"><!--CSS-- Account Setting form-->
+                <a id="close" href="javascript:closePopUp('settings_part2')"><img src="{% static 'close.png' %}" alt="close"></a>
                 {% if detail %}
                     <p id="firstname"><!--CSS-- Account Setting Para-->
                         <label>First Name</label><!--CSS-- Account Setting label-->

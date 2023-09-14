@@ -1,4 +1,8 @@
 @media(min-width:768px) and (max-width:992px){
+    div[id='topImage']>img{transform: translate(52.5%,0px);}
+
+    div[id='NewtopImage']>img{transform: translate(-52.5%,0px);}
+
     div[id='navigation_2']>p{width: 35%;}
 
     a[id='menu']{display: none;}
@@ -293,9 +297,29 @@
 
     section[id='settings_part2']{/*Account Setting Part2*/
     width: 400px;
-    border: 1px solid red;
     overflow: hidden;
     margin: auto;}
+    /*END SETTINGS*/
+
+    /*SETTINGS*/
+    section[id='settings_part2']{display: none;/*Account Setting Part2*/
+    position: absolute;
+    flex-flow: row nowrap;
+    height: 400px;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    filter: drop-shadow(0px 0px 1.5px #969696);
+    padding-top: 20px;}
+
+    form[id='settingForm']{display: flex;/*Account Setting form*/
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 80%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #fff;
+    padding-bottom: 20px;}
     /*END SETTINGS*/
 
 
@@ -322,5 +346,29 @@
     div[id='developerInfo']>section>div>p{text-align: center;}
 
     div[id='developerInfo']>section>div>p>span{margin: 4px 0px;}
+
+    div[id='footerThings']>div>p{font-size: 13px;}
     /*END FOOTER*/
+
+
+
+    /*HISTORY*/
+    section[id='history']>div:nth-of-type(2){justify-content: flex-start;}
+    /*END HISTORY*/
+
+
+
+
+
+
+
+
+    /*STYLE THAT RESPOND TO SCRIPT ACTION*/
+    div[id='detailContainer']{width: 320px;}
+
+    #OdetailContainer{width: 320px;}
+
+    /*ADD ADDRESS*/
+    form[id='addAdressForm'],form[id='mainAddAdressForm']{position: sticky;
+    top: 20px;}
     }

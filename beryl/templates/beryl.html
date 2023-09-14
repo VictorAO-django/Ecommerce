@@ -16,13 +16,14 @@
 
         <link rel="stylesheet" href="{% static 'CSS/beryl.css' %}">
         <script src="{% static 'javascript/beryl.js' %}" role="application"></script>
+        <script src="{% static 'javascript/preloader.js' %}" role="application"></script>
         <script src="{% static 'javascript/address.js' %}" role="application"></script>
-        <script src="{% static 'javascript/cart.js' %}" role=""></script>
+        <script src="{% static 'javascript/cart.js' %}" role="application"></script>
     </head>
     <body>
         <div id="navigation"> <!--CSS-- Top Navigation Container-->
 
-            <p id="name">Beryl <span>Store</span></p> <!--CSS-- Brand Name-->
+            <a id="name" href="/">Beryl <span>Store</span></a> <!--CSS-- Brand Name-->
 
             <nav><!--CSS-- Top Navigation Nav-->
 
@@ -55,7 +56,7 @@
                 <a id="menu" href="javascript:sideBar('show')"><!--CSS-- Menu anchor -->
                     <img src="{% static 'menu.png' %}"><!--CSS-- Menu image -->
                 </a>
-                <a href="/"><!--CSS-- Brand Logo Image anchor-->
+                <a href="/" id="secondLogo"><!--CSS-- Brand Logo Image anchor-->
                     <img src="{% static 'logo.png' %}"><!--CSS-- Brand Logo image -->
                 </a>
             </div>
@@ -167,7 +168,7 @@
                         </a>
                     </li>
                     <li><!--CSS-- Side LI -->
-                        <a href="/history" class="sideLi"><!--CSS-- Side anchor -->
+                        <a href="/history/" class="sideLi"><!--CSS-- Side anchor -->
                             <img src="{% static 'history.png' %}" id="sideIcon"><!--CSS-- Side icon -->
                             Orders
                         </a>
@@ -236,6 +237,10 @@
             </div>
         </div>
 
+        {% block checkout %}
+        
+        {% endblock checkout %}
+
         <footer>
             <section>
                 <div id="mailUs">
@@ -244,10 +249,11 @@
                     </div>
                     <form method="POST" validate="novalidate">
                         <p id="comment">Drop a comment</p>
-                        <input name="email" placeholder="e.g example@gmail.com">
-                        <input name="comment" placeholder="comment here">
+                        <input name="email" placeholder="e.g example@gmail.com" required>
+                        <input name="comment" placeholder="comment here" required>
+                        {% csrf_token %}
                         <p id="submitComment">
-                            <input type="submit" value="SEND"> 
+                            <input type="submit" value="SEND" disabled> 
                             <input type="reset" value="RESET">
                         </p>
                     </form>

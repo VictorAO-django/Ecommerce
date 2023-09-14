@@ -1,28 +1,34 @@
-    @media(min-width:992px) and (max-width:1200px){
-    div[id='topImage']>img{transform: translate(51.5%,0px);}
+@media(max-width:630px){
+    div[id='topImage']>img{transform: translate(54.5%,0px);}
 
-    div[id='NewtopImage']>img{transform: translate(-51.5%,0px);}
+    div[id='NewtopImage']>img{transform: translate(-54%,0px);}
+    
+    div[id='navigation_2']>p{width: 45%;}
 
-    div[id='navigation_2']>p{width: 38%;}
+    a[id='secondLogo']{display: none;}
 
     section[id='body']{display: flex;/*Page Main Body*/
-    margin: 4px auto;
+    margin: 7px auto;
     width: 96%;
     filter: drop-shadow(0px 0px 1px #96969665);
-    align-items: stretch;}
+    align-items: flex-start;}
 
     div[id='sideBar']{border-radius: 5px;/*Page Side Bar*/
     overflow: hidden;
+    display: none;
+    position: absolute;
     flex-shrink: 0;
-    flex-basis:220px;
-    background-color: #fff;}
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 1px #49484833);
+    z-index: 10;}
+
 
     /*ROOT PAGE*/
     section[id='product']{background-color: #fff;/*Product Container*/
     margin: 0px 0px 15px 0px;
     border: 1px solid transparent;
     border-radius: 5px;
-    height: 240px;
+    height: 230px;
     overflow: hidden;}
     
     p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
@@ -37,10 +43,10 @@
     overflow-x: scroll;
     margin-top: 8px;}
     
-    div[id='product']>a{min-width: 130px;/*Item detail anchor*/
+    div[id='product']>a{min-width: 120px;/*Item detail anchor*/
     background-color: #fff;
     padding: 3px;
-    margin: 15px 20px;
+    margin: 15px 15px;
     border-radius: 3px;}
     
     div[id='product']>a:hover{filter: drop-shadow(0px 0px 1px #969696a4);}/*Item detail anchor*/
@@ -60,26 +66,22 @@
     color: #b16d07;}
     /*END ROOTPAGE*/
 
-
-
-
-    /*CART PAGE*/
     section[id='shoppingCart']{background-color: #fff;/*Cart Container*/
     border-radius: 5px;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: flex-start;
     overflow: clip;}
     
-    section[id='cartPart-1']{margin-left: 20px;
-    width: 60%;
+    section[id='cartPart-1']{width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    align-items: flex-start;}/*Cart Container 1*/
+    justify-content: space-around;
+    align-items: center;}/*Cart Container 1*/
     
     section[id='cartPart-1']>div[id='cartItem']{display: flex;/*Cart Item Container*/
     flex-flow: row nowrap;
-    margin:30px 0px;
+    margin:20px 0px;
     width: 100%;}
     
     section[id='cartPart-1']>div>div:first-of-type{display: flex;/*Cart Item Detail Container*/
@@ -88,12 +90,13 @@
     align-items: flex-start;
     border-right: 1px solid #96969665;
     margin: 4px;
-    padding-right: 40px;}
+    padding-right: 20px;}
     
-    figure[id='itemImg']{width: 150px;/*Cart Item figure*/
+    figure[id='itemImg']{width: 130px;/*Cart Item figure*/
     margin: 5px;}
     
-    figure[id='itemImg']>img{max-width: 100%;}/*Cart Item image*/
+    figure[id='itemImg']>img{max-width: 100%;
+    border-radius: 3px;}/*Cart Item image*/
     
     section[id='cartPart-1']>div>div:first-of-type>p{margin: 2px 5px;/*Cart item price*/
     max-width: 250px;
@@ -106,7 +109,7 @@
     
     section[id='cartPart-1']>div>div:last-of-type{display: flex;/*Cart Item Edit*/
     flex-flow: column nowrap;
-    flex-grow: 1;}
+    width: 230px;}
     
     p[id='itemDescription']{margin-left: 23px;/*Cart Item Description*/
     margin-bottom: -10px;
@@ -130,7 +133,7 @@
     border-bottom: 0.5px solid #12121228;
     overflow: hidden;
     margin-left: 5px;
-    width: 70%;
+    width: 80%;
     height: 30px;}
     
     p[id='quantityNumber']{display: flex;/*Cart Item Quantity*/
@@ -153,7 +156,7 @@
     margin: 15px 5px 0px 5px;
     display: flex;
     flex-flow: row nowrap;
-    width: 70%;
+    width: 80%;
     height: 22px;
     border-radius: 5px;
     overflow: hidden;}
@@ -192,15 +195,13 @@
     
     div[id='removesaved']>a>img{width: 20px;}
     
-    section[id='cartPart-2']{flex-grow: 1;/*Cart Container 2*/
-    margin-left: 50px;
-    padding: 5px;
+    section[id='cartPart-2']{padding: 5px;/*Cart Container 2*/
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;
-    margin-top: 10%;
-    position: sticky;
-    top: 100px;}
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0px 0px 20px 50px;
+    width: 100%;}
     
     p[id='checkoutText']{font-family: MontserratRegular;/*Checkout statement*/
     font-size: 13px;
@@ -208,7 +209,7 @@
     text-align: center;}
     
     div[id='checkout']{background-color: #FE9900;/*Checkout Container*/
-    min-width: 45%;
+    min-width: 35%;
     height: 30px;
     display: flex;
     flex-flow: row nowrap;
@@ -265,66 +266,83 @@
     
     div[id='emptyCart']>a:hover{background-color: #d8870d;}
     /*END CART PAGE*/
-
-    /*ADDRESS*/
-    section[id='address']{flex-flow: row nowrap;}
-
-    section[id='addressPart-1']{margin-left: 20px;/*Adress Part 1*/
-    padding-right: 10px;}
-
-    div[id='addressDetail']>p{font-family: MontserratMedium;
-    margin: 5px 0px;
-    padding: 3px 8px;
-    font-size: 14px;
-    min-width: 280px;
-    color: #121212b0;}
-
-    section[id='addressPart-2']{flex-grow: 0;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    border-left: 1px solid #1212121e;
-    position: sticky;
-    top:100px;}
-    /*END ADDRESS*/
     
+     /*ADDRESS*/
+     section[id='address']{flex-flow: column nowrap;}
+
+     section[id='addressPart-1']{margin-left: 20px;/*Adress Part 1*/
+     padding-right: 10px;}
+ 
+     div[id='addressDetail']>p{font-family: MontserratMedium;
+     margin: 5px 0px;
+     padding: 3px 8px;
+     font-size: 14px;
+     min-width: 280px;
+     color: #121212b0;}
+ 
+     section[id='addressPart-2']{width: 100%;
+     display: flex;
+     margin-bottom: 30px;
+     flex-flow: column;
+     justify-content: flex-start;
+     align-items: flex-start;
+     border-left: 1px solid #1212121e;}
+     /*END ADDRESS*/
+
     /*SETTINGS*/
-    section[id='settings']{flex-flow: row nowrap;}
-
     section[id='settings_part2']{display: none;/*Account Setting Part2*/
-    flex-flow: column;
+    position: absolute;
+    flex-flow: row nowrap;
     height: 400px;
-    overflow: hidden;
+    width: 70%;
+    justify-content: space-around;
+    margin-left: 10%;
     align-items: center;
-    justify-content: center;
-    flex-grow: 0.9;
-    position: sticky;
-    top: 100px;}
-    
+    filter: drop-shadow(0px 0px 1.5px #969696);
+    padding-top: 20px;}
+
     form[id='settingForm']{display: flex;/*Account Setting form*/
     flex-flow: column nowrap;
     align-items: center;
     width: 100%;
-    margin-top: -10px;}
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #fff;
+    padding-bottom: 20px;}
     /*END SETTINGS*/
 
-    
+
     /*FOOTER*/
-    footer>section:first-of-type{
-    flex-flow: row nowrap;}
+    footer>section:first-of-type{flex-flow: column nowrap;
+    margin-top: 15px;}
 
-    div[id='mailUs']{padding: 30px;}
+    div[id='mailUs']{justify-content: space-around;
+    flex-flow: column;
+    width: 60%;
+    background-color: #535257b4;
+    padding: 0px 30px;
+    margin-bottom: 20px;}
 
-    div[id='mailUs']>form{width: 350px;}
+    div[id='mailUs']>form{align-items: center;
+    width: 100%;}
 
-    div[id='footerThings']>div>p{font-size: 13px;}
+    div[id='mailUs']>div{display: none;}
+
+    div[id='mailUs']>form>input{width: 98%;}
+
+    div[id='mailUs']>form>input{text-align: center;}
+
+    div[id='developerInfo']>section>div>p{text-align: center;}
+
+    div[id='developerInfo']>section>div>p>span{margin: 4px 0px;}
+
+    div[id='footerThings']>div>p{font-size: 12px;}
     /*END FOOTER*/
 
 
 
     /*HISTORY*/
-    section[id='history']>div:nth-of-type(2){justify-content: flex-start;}
+    section[id='history']>div:nth-of-type(2){justify-content: space-around;}
     /*END HISTORY*/
 
 
@@ -335,14 +353,8 @@
 
 
 
-
-
     /*STYLE THAT RESPOND TO SCRIPT ACTION*/
-    div[id='detailContainer']{width: 350px;}
+    div[id='detailContainer']{width: 320px;}
 
-    #OdetailContainer{width: 350px;}
-
-    /*ADD ADDRESS*/
-    form[id='addAdressForm'],form[id='mainAddAdressForm']{position: sticky;
-    top: 20px;}
-}
+    #OdetailContainer{width: 320px;}
+    }

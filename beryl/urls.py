@@ -26,7 +26,7 @@ urlpatterns = [
     path('register/',Register.as_view(), name='register'),
     path('',include('django.contrib.auth.urls')),
     path('personaldetail',personalSetting),
-    path('history',accountHistory),
+    path('history/',accountHistory),
     path('',include('berylapp.urls')),
     path('<str:store><int:pk>',productStore),
 ]

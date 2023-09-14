@@ -1,4 +1,8 @@
 @media(min-width:630px) and (max-width:768px){
+    div[id='topImage']>img{transform: translate(53%,0px);}
+
+    div[id='NewtopImage']>img{transform: translate(-53%,0px);}
+
     div[id='navigation_2']>p{width: 25%;}
 
     section[id='body']{display: flex;/*Page Main Body*/
@@ -76,7 +80,7 @@
     section[id='cartPart-1']>div[id='cartItem']{display: flex;/*Cart Item Container*/
     flex-flow: row nowrap;
     margin:20px 0px;
-    width: 70%;}
+    width: 100%;}
     
     section[id='cartPart-1']>div>div:first-of-type{display: flex;/*Cart Item Detail Container*/
     flex-flow: column nowrap;
@@ -192,9 +196,9 @@
     section[id='cartPart-2']{padding: 5px;/*Cart Container 2*/
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
-    margin: 30px 0px 20px 0px;
+    margin: 0px 0px 20px 50px;
     width: 100%;}
     
     p[id='checkoutText']{font-family: MontserratRegular;/*Checkout statement*/
@@ -276,11 +280,34 @@
  
      section[id='addressPart-2']{width: 100%;
      display: flex;
+     margin-bottom: 30px;
      flex-flow: column;
-     justify-content: space-around;
-     align-items: center;
+     justify-content: flex-start;
+     align-items: flex-start;
      border-left: 1px solid #1212121e;}
      /*END ADDRESS*/
+
+    /*SETTINGS*/
+    section[id='settings_part2']{display: none;/*Account Setting Part2*/
+    position: absolute;
+    flex-flow: row nowrap;
+    height: 400px;
+    width: 70%;
+    justify-content: space-around;
+    margin-left: 20%;
+    align-items: center;
+    filter: drop-shadow(0px 0px 1.5px #969696);
+    padding-top: 20px;}
+
+    form[id='settingForm']{display: flex;/*Account Setting form*/
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 80%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #fff;
+    padding-bottom: 20px;}
+    /*END SETTINGS*/
 
 
     /*FOOTER*/
@@ -306,5 +333,25 @@
     div[id='developerInfo']>section>div>p{text-align: center;}
 
     div[id='developerInfo']>section>div>p>span{margin: 4px 0px;}
+
+    div[id='footerThings']>div>p{font-size: 12px;}
     /*END FOOTER*/
+
+
+
+    /*HISTORY*/
+    section[id='history']>div:nth-of-type(2){justify-content: space-around;}
+    /*END HISTORY*/
+
+
+
+
+
+
+
+
+    /*STYLE THAT RESPOND TO SCRIPT ACTION*/
+    div[id='detailContainer']{width: 320px;}
+
+    #OdetailContainer{width: 320px;}
     }

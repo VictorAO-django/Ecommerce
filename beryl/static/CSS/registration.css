@@ -38,15 +38,19 @@ align-items: center;}
 div[id='logo']>img{max-width: 100%;}
 
 p[id='firstStatement']{font-family: MontserratMedium;
-font-size: 17px;}
+font-size: 17px;
+text-align: center;}
 
 p[id='secondStatement']{font-family: MontserratRegular;
 font-size: 14px;
-margin-top: 0px;}
+margin-top: 0px;
+text-align: center;}
 
 form{display: flex;
 flex-flow: column nowrap;
 width: 300px;}
+
+/*form[id='settingForm']>p:first-of-type{display: none;}*/
 
 form>p{display: flex;
 flex-flow: column nowrap;

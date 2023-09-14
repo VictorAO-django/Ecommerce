@@ -60,17 +60,6 @@
                 {% if user.is_authenticated %}
                 <img src="{% static 'checkout.png' %}"><!--CSS-- Checkout Icon -->
                 <a id="checkoutPrice" onclick="checkout()">CHECKOUT</a><!--CSS-- Checkout Anchor -->
-                <form method="POST" id="checkoutform" action="https://checkout.flutterwave.com/v3/hosted/pay">
-                    <input type="hidden" name="public_key" value="FLWPUBK_TEST-1818fea94138a45ff41c9d7a5d7572a2-X">
-                    <input type="hidden" name="customer[email]" value="ayomideolusola5002@gmail.com">
-                    <input type="hidden" name="customer[name]" value="{{ user.username }}">
-                    <input type="hidden" name="tx_ref" value="ayisnbj-23">
-                    <input type="hidden" name="amount" value="3400">
-                    <input type="hidden" name="currency" value="NGN">
-                    <input type="hidden" name="meta[phone]" value="07063475466">
-                    <input type="hidden" name="redirect_url" value="http://128.0.0.1:8000/">
-                </form>
-
                 {% else %}
 
                 <img src="{% static 'checkout.png' %}"><!--CSS-- Checkout Icon -->
@@ -81,3 +70,38 @@
         </section>
     </section>
 {% endblock frame%}
+
+{% block checkout %}
+    <section id="ConfirmCheckOut">
+        <section>
+            <a id="close" href="javascript:closePopUp('ConfirmCheckOut')"><img src="{% static 'close.png' %}" alt="close"></a>
+            <p>ORDER SUMMARY</p>
+            <div id="cartDetails">
+                <p>item's total (<span id="totalItem"></span>) <span id="summation">21000.NGN</span></p>
+            </div>
+
+            <p>SELECT PICK-UP STATION</p>
+            <div id="station">
+                <p>{{ user.username }}</p>
+                {% for point in station %}
+                    <p><input type="radio" name="address" onclick="checkoutAddress('{{ point }}')">{{ point }}</p>
+                {% endfor %}
+            </div>
+
+            <p>PHONE | <span id="buyerPhoneNo">07063475466</span></p>
+
+            <div id="checkoutNotice">
+                <p>NOTICE</p>
+                <p>This is just a portfolio demo website, so there will be no payment made </p>
+            </div>
+            <form id="CheckoutDetail" method="post">
+                
+                {{ orderForm.as_p }}
+                {% csrf_token %}
+            </form>
+
+            <a onclick="confirmed()" id="confirm">CONFIRM DELIVERY DETAILS</a>
+
+        </section>
+    </section>
+{% endblock checkout %}

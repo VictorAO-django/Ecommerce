@@ -1,93 +1,42 @@
 {% extends 'beryl.html' %}
 {% load static %}
 {% block frame %}
-<section id="history"><!--CSS-- History --> 
-    <div id="historyStatus"><!--CSS-- History detail--> 
-        <p id="checkoutDate">July 20,2023</p><!--CSS-- History Date--> 
-        <p id="statusSuccess">Successful</p><!--CSS-- History Status--> 
-    </div>
 
-    <div><!--CSS-- History Selected Item Container--> 
-        <div id="cartItems"><!--CSS-- History Selected Item--> 
-            <figure id="itemPics"><!--CSS-- History Selected Item Figure--> 
-                <img src="20230610_092219.jpg"><!--CSS-- History Selected Item Image--> 
+{% if exist %}
+    {% for history in orderHistory %}
+        <section id="history">
+            <div id="historyStatus">
+                <p id="checkoutDate">{{ history.0.date }}</p>
+                <p id="statusProgress">{{ history.0.get_status_display }}</p>
+            </div>
+            <div>
+                {% for item in history.1 %}
+                    <div id="cartItems">
+                        <figure id="itemPics">
+                            <img src="{{ item.picture.url }}">
+                        </figure>
+                        <figcaption id="itemClass">{{ item.product_class }}</figcaption>
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <p id="historyPrice">Total {{ history.0.checkout_price }}.00NGN</p>
+                <!--<a id="reCheckOut"><img src="{% static 'checkout.png' %}">CHECKOUT</a>-->
+            </div>
+        </section>
+    {% endfor %}
+{% else %}
+    <section id="history">
+        <div id="emptyCart" style="margin-bottom: 30px;">
+            <figure>
+                <img src="{% static 'no_history.png' %}">
             </figure>
-            <figcaption id="itemClass">Supermarket</figcaption><!--CSS-- History Selected Item Caption--> 
+            <p>You have no previous orders</p>
+            <p>Browse our categories and purchased items which <br>will be added to your history!</p>
+            <a href="/">START SHOPPING</a>
         </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Cake</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Wine</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Mug Cup</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Appliance</figcaption>
-        </div>
-    </div>
-    <div><!--CSS-- History Total Detail--> 
-        <p id="historyPrice">Total 29000.00NGN</p><!--CSS-- History Total Price--> 
-        <a id="reCheckOut"><!--CSS-- History recheckout anchor--> 
-            <img src="{% static 'checkout.png' %}"><!--CSS-- History recheckout icon--> 
-            CHECKOUT
-        </a>
-    </div>
-</section>
+    </section>
+{% endif %}
 
-<section id="history">
-    <div id="historyStatus">
-        <p id="checkoutDate">July 20,2023</p>
-        <p id="statusFail">Failed</p>
-    </div>
-    <div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Supermarket</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Cake</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Wine</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Mug Cup</figcaption>
-        </div>
-        <div id="cartItems">
-            <figure id="itemPics">
-                <img src="20230610_092219.jpg">
-            </figure>
-            <figcaption id="itemClass">Appliance</figcaption>
-        </div>
-    </div>
-    <div>
-        <p id="historyPrice">Total 29000.00NGN</p>
-        <a id="reCheckOut"><img src="{% static 'checkout.png' %}">CHECKOUT</a>
-    </div>
-</section>
+
 {% endblock frame %}

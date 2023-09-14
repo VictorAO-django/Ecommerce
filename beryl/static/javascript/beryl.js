@@ -179,7 +179,7 @@ function showdetail(productClass,productCode,imgSrc,amount,amountToPay,descripti
             var detailContainer = document.getElementById('detailContainer') ? document.getElementById('detailContainer') : document.getElementById('OdetailContainer')
             if(document.getElementById('detailContainer')){
                 detailContainer.id = 'OdetailContainer'
-                document.getElementById('OdetailContainer').style.left = (window.innerWidth - 353) +'px';
+                document.getElementById('OdetailContainer').style.left = (window.innerWidth - (document.getElementById('OdetailContainer').clientWidth)) +'px';
             }
                 detailContainer.insertBefore(loading,detailContainer.firstChild)
                 T = setTimeout(showdetail,2000)
@@ -242,6 +242,10 @@ function showSettingForm(elemID){
     document.getElementById('settings_part2').style.display = 'flex'
     document.getElementById('settingSave').style.display = 'flex'
 }
+
+function closePopUp(unique_id){
+    document.getElementById(unique_id).style.display = 'none'
+}
 //+++++++++++++++++++++++END SETTING APIS+++++++++++++++++++++++++++++//
 
 
@@ -256,13 +260,10 @@ function CustomAlert(message){
     this.message = message || ''; //message attribute
      
     var dialogbox = document.createElement('div') // CSS-- Dialog Box//
-    dialogbox.className = 'dialogbox'                                //
-    var doneImg = document.createElement('img')                      //
-    doneImg.src = '/static/done.png'                                 //THIS CREATES THE ALERT BOX AND ASSIGN THE
+    dialogbox.className = 'dialogbox'                                //THIS CREATES THE ALERT BOX AND ASSIGN THE
     var dialogMessage = document.createElement('p')                  //ALERT MESSSAGE AS THE DISPLAY TEXT
     dialogMessage.innerHTML = this.message;                          //
 
-    dialogbox.appendChild(doneImg);
     dialogbox.appendChild(dialogMessage);
 
     this.ALERT = function(){//THIS IS FOR SUCCESS ALERT WITH GREEN BACKGROUND
@@ -314,9 +315,13 @@ function getCartIndex(param){
             switch(param){
                 case 'cartindex': //if parameter is 'cartindex'
                     document.getElementById('cartNumber').innerText = this.responseText; //apply Total Count
+                    if(document.getElementById('totalItem')){
+                        document.getElementById('totalItem').innerText = this.responseText; //apply to checkout page
+                    }
                     break;
                 case 'cartamount': //if parameter is 'cartamount'
                     document.getElementById('checkoutPrice').innerText = 'CHECKOUT (' + this.responseText + ')'; //apply Total Price
+                    document.getElementById('id_checkout_price').value = parseInt(this.responseText); //apply Total Price for checkout form
                     break
             }
         }
@@ -367,12 +372,6 @@ function saveItem(param,mode){
 
 
 
-
-
-function checkout(){
-    document.getElementById('checkoutform').submit()
-}
-
 function checkWidth(){alert(window.innerWidth)}
 
 function decideDisplayImage(){
@@ -416,11 +415,86 @@ function sideBar(mode){
     document.getElementById('menu').href = "javascript:sideBar('" + newMode +"')"
 }
 
+function Preload(notify){
+    this.notify = notify || "setting up in progress"
+
+    this.show = function(){
+        var container = document.createElement('div') 
+        container.id = 'preloaderContainer'
+        container.style.width = window.innerWidth + 'px'
+        container.style.height = window.innerHeight + 'px'
+
+        var innerContainer = document.createElement('div')
+        innerContainer.id = "preloaderInnerContainer"
+
+        var preloader = document.createElement('img')
+        preloader.src = "/static/loading-2.gif"
+        preloader.id = "preloader"
+
+        var notifyStatement = document.createElement('p')    
+        notifyStatement.innerText = this.notify
+        notifyStatement.id = "preloaderStatement"
+
+        container.appendChild(innerContainer)
+        innerContainer.appendChild(preloader)
+        innerContainer.appendChild(notifyStatement)
+        
+        document.body.appendChild(container)
+    }
+
+    this.hide = function(){
+        if(document.getElementById('preloaderContainer')){
+            document.body.removeChild(document.getElementById("preloaderContainer"))
+        }
+    }
+
+}
+var preloadertrail = true
+var Preloader = new Preload('setting up in progress')
+function showPreload(){
+    if(preloadertrail){
+        Preloader.show()
+        preloadertrail = false
+        setTimeout(showPreload,3000)
+    }else{
+        Preloader.hide()
+    }
+}
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////                   CHECKOUT SCRIPTS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function checkoutAddress(address){
+    document.getElementById('id_address').value = address
+}
+
+
+function checkout(){
+    var CartItem = new toSelect()
+    document.getElementById('id_items').value = CartItem.CartItems()
+    document.getElementById('ConfirmCheckOut').style.display = 'flex'
+}
+
+function confirmed(){
+    if(document.getElementById('id_address').value == ""){
+        alertUser('error','Kindly select your pickup station')
+    }else{
+        document.getElementById('CheckoutDetail').submit()
+        document.cookie = 'cart ='
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////                   CHECKOUT SCRIPTS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 document.addEventListener("DOMContentLoaded",function(){
+    showPreload()
+
     if(document.cookie.indexOf('cart') == -1){
         document.cookie = "cart = "
     }
