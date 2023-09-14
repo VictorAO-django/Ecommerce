@@ -4,10 +4,10 @@
 {% block title %} Beryl Collection {% endblock title %}
 
 {% block frame %}
-    <section id="product" class="{{ class }}"><!--CSS-- Product Container -->
+    <section id="productStore" class="{{ class }}"><!--CSS-- Product Container -->
         <p id="productClass">{{ class }}</p><!--CSS-- Product Class Name -->
         {% if Itemexist %}
-            <div id="product"><!--CSS-- Item Container -->
+            <div id="productStore"><!--CSS-- Item Container -->
                 {% for item in storeItem %}
                     <a onclick="showdetail('{{item.product_class}}','{{item.product_code}}','{{item.picture.url}}','{{item.price}}.00NGN','{{item.price_to_sell}}.00NGN','{{item.description}}','{{item.notice}}')"><!--CSS-- Item detail anchor -->
                         <img src="{{ item.picture.url }}"><!--CSS-- Item Image -->

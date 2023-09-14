@@ -167,6 +167,20 @@
     margin-left: 8px;
     flex-grow: 1;}
 
+
+    /*PRODUCT STORE*/
+    section[id='productStore']{background-color: #fff;/*Product Container*/
+    margin: 0px 0px 15px 0px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;}
+
+    div[id='productStore']{display: flex;/*Item Container*/
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 8px;}
+    /*END PRODUCT STORE*/
+
     /*HISTORY*/
     section[id='history']{display: flex;/*History*/
     flex-flow: column nowrap;
@@ -174,7 +188,8 @@
     background-color: #fff;
     border-radius: 5px;
     margin: 15px 0px;
-    min-height: 200px;}
+    min-height: 200px;
+    justify-content: flex-start;}
     
     div[id='historyStatus']{display: flex;/*History detail*/
     flex-flow: row nowrap;

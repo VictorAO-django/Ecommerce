@@ -1,5 +1,5 @@
 //Window Error Function
-function showErr(msg,URL,lineNum,columnNo,error){
+/*function showErr(msg,URL,lineNum,columnNo,error){
     var errWin = window.open("","osubWin","width=650px,height=600px")
     var winText = "<html><title>Error Window</title>"
     winText += "<body> <p>MSG: " + msg + ".</p>"
@@ -15,7 +15,7 @@ function showErr(msg,URL,lineNum,columnNo,error){
     errWin.moveTo(oWidth,oHeight);
     return true;
 }
-window.onerror = showErr;
+window.onerror = showErr;*/
 
 //++++++++++++++++++THIS IS FOR THE SWITCHING EFFECT OF THE TOP DISPLAY IMAGE++++++++++++++=+//
 var switchText = ['topImage','NewtopImage']//set an array of the switching 'id' 
