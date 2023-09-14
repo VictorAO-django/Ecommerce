@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s%$^+02s*w%79wl4r*8*aguf(t-19x#cqhoqk+76zqm)&n^ll2'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,10 +80,14 @@ WSGI_APPLICATION = 'beryl.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BerylEcommerce',
-        'USER': 'postgres',
-        'PASSWORD': 'Ayomide2005',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'NAME': 'BerylEcommerce',
+        #'USER': 'postgres',
+        #'PASSWORD': 'Ayomide2005',
+        'ENGINE': config('ENGINE'),
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5000',
     }
