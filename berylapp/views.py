@@ -47,7 +47,7 @@ def rootPage(request):
     for i in pre_context.keys(): #loop throught the pre_context keys()
         productToSend = [] #create an empty list 
         for u in pre_context[i].objects.all(): #loop through the certain model
-            if len(productToSend) < 5: 
+            if len(productToSend) < 11: 
                 productToSend.append(u) #append to the 'productToSend' list if the length is <5. i.e we only need 5 items from each store on the template
                 continue
             else:
