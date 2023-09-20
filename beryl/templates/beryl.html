@@ -12,11 +12,10 @@
         <meta name="theme-color" content="#FE9900">
         <meta name="robot" content="nofollow">
         <meta http-equiv="author" content="Victor A.O">
-        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="pragma" content="cache">
 
         <link rel="stylesheet" href="{% static 'CSS/beryl.css' %}">
         <script src="{% static 'javascript/beryl.js' %}" role="application"></script>
-        <script src="{% static 'javascript/preloader.js' %}" role="application"></script>
         <script src="{% static 'javascript/address.js' %}" role="application"></script>
         <script src="{% static 'javascript/cart.js' %}" role="application"></script>
     </head>
@@ -77,7 +76,12 @@
                 </li>
                 <li><!--CSS-- Second Navigation LI -->
                     <img src="{% static 'location.png' %}" id="navIcon"><!--CSS-- Second Navigation icon -->
-                    <a href="/address">Address</a><!--CSS-- Second Navigation anchor -->
+                    {% if user.is_authenticated %}
+                        <a href="/address">Address</a><!--CSS-- Second Navigation anchor -->
+                    {% else %}
+                        <a onclick="alertUser('error','login or create an account first')">Address</a><!--CSS-- Second Navigation anchor -->
+                    {% endif %}
+
                 </li>
                 <li><!--CSS-- Second Navigation LI -->
                     <img src="{% static 'shoppingCart.png' %}" id="navIcon"><!--CSS-- Second Navigation icon -->
@@ -150,16 +154,30 @@
                     <p>MY BERYL ACCOUNT</p>
 
                     <li><!--CSS-- Side LI -->
-                        <a href="/settings" class="sideLi"><!--CSS-- Side anchor -->
-                            <img src="{% static 'account.png' %}" id="sideIcon"><!--CSS-- Side icon -->
-                            Management
-                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="/settings" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'account.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Management
+                            </a>
+                        {% else %}
+                            <a onclick="alertUser('error','login or create an account first')" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'account.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Management
+                            </a>
+                        {% endif %}
                     </li>
                     <li><!--CSS-- Side LI -->
-                        <a href="/saveditems" class="sideLi"><!--CSS-- Side anchor -->
-                            <img src="{% static 'saved_item.png' %}" id="sideIcon"><!--CSS-- Side icon -->
-                            Saved Items
-                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="/saveditems" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'saved_item.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Saved Items
+                            </a>
+                        {% else %}
+                            <a onclick="alertUser('error','login or create an account first')" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'saved_item.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Saved Items
+                            </a>
+                        {% endif %}
                     </li>
                     <li><!--CSS-- Side LI -->
                         <a href="/recentlyViewed" class="sideLi"><!--CSS-- Side anchor -->
@@ -168,10 +186,17 @@
                         </a>
                     </li>
                     <li><!--CSS-- Side LI -->
-                        <a href="/history/" class="sideLi"><!--CSS-- Side anchor -->
-                            <img src="{% static 'history.png' %}" id="sideIcon"><!--CSS-- Side icon -->
-                            Orders
-                        </a>
+                        {% if user.is_authenticated %}
+                            <a href="/history/" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'history.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Orders
+                            </a>
+                        {% else %}
+                            <a onclick="alertUser('error','login or create an account first')" class="sideLi"><!--CSS-- Side anchor -->
+                                <img src="{% static 'history.png' %}" id="sideIcon"><!--CSS-- Side icon -->
+                                Orders
+                            </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>

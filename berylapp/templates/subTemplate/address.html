@@ -35,7 +35,11 @@
                 <a id="addNewAddress" onclick="saveAddress()" style="display: none;">ADD</a>
                 {% csrf_token %}
             </form>
-            <a id="addAddress" onclick="address('addressPart-2','addAddress')"><img src="{% static 'increase.png' %}">ADD ADDRESS</a>
+            {% if user.is_authenticated %}
+                <a id="addAddress" onclick="address('addressPart-2','addAddress')"><img src="{% static 'increase.png' %}">ADD ADDRESS</a>
+            {% else %}
+                <a id="addAddress" onclick="alertUser('error','login or create an account')"><img src="{% static 'increase.png' %}">ADD ADDRESS</a>
+            {% endif %}
         </section>
     </section>
     <p id="CSRF">{% csrf_token %}</p>

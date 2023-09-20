@@ -16,21 +16,13 @@ from .forms import userInfo,buyerOrder
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 def rootPage(request):
     template = 'subTemplate/root.html' #Template to provide
-    check = bool() #This is to check if the current user has provided his details on the account management.The value changes as the program flows, 'True' representing that the user has provided such details and 'False' representing otherwise.
     context = {} #Contect to deliver to the template
 
-    for i in userDetail.objects.all(): #loop through 'userdetail' table in database
-        if i.Username == request.user.username: #if the readonly field 'Username' is equal to the user username i.e the user has provided his details on account management
-            check = True 
-            break
-        else: #if the user has never provided details on the account management.
-            check = False
-
-    if check: #if check is equal to True
-        DETAIL = userDetail.objects.get(Username = request.user.username) #get the row details of the user
-        previousSave = DETAIL.Saved # we track the user Saved items 
-        context['saveditems'] = previousSave #then we pass the saveditem to the template 
-
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(username=request.user.username)
+        DETAIL = userDetail.objects.get(relation=currentUser)
+        previousSave = DETAIL.Saved
+        context['saveditems'] = previousSave
 
     pre_context = { #THIS IS TO PROVIDE ACCESS TO EACH STORE IN THE DATABASE
         'SupermarketModel' : SupermarketModel,
@@ -60,20 +52,13 @@ def rootPage(request):
 
 def productStore(request,store,pk):
     template = 'subTemplate/productStore.html'
-    check = False
     context = {
         'Itemexist':True,
     }
 
-    for i in userDetail.objects.all():
-        if i.Username == request.user.username:
-            check = True
-            break
-        else:
-            check = False
-
-    if check:
-        DETAIL = userDetail.objects.get(Username = request.user.username)
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(Username=request.user.username)
+        DETAIL = userDetail.objects.get(relation=currentUser)
         previousSave = DETAIL.Saved
         context['saveditems'] = previousSave
 
@@ -133,24 +118,29 @@ def shoppingCart(request):
         'Cartexist':Exist,
     }
 
-    currentUser = User.objects.get(username=request.user.username)
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(username=request.user.username)
 
-    if request.method == 'POST':
-        new_order = orders.objects.create(
-            relation=currentUser,
-            username=request.user.username,
-            items=request.POST['items'],
-            checkout_price = request.POST['checkout_price'],
-            address=request.POST['address'],
-        )
-        return HttpResponseRedirect('/history/')
-    else:
-        form = buyerOrder()
-        context['orderForm'] = form
+        if request.method == 'POST':
+            new_order = orders.objects.create(
+                relation=currentUser,
+                username=request.user.username,
+                phone_number = request.POST['Phonenumber'],
+                items=request.POST['items'],
+                checkout_price = request.POST['checkout_price'],
+                address=request.POST['address'],
+            )
+            return HttpResponseRedirect('/history/')
+        else:
+            form = buyerOrder()
+            context['orderForm'] = form
 
-        stations = userDetail.objects.get(relation=currentUser).Address
-        if stations != "":
-            context['station'] = stations.split('#')
+            stations = userDetail.objects.get(relation=currentUser).Address
+            Phonenumber = userDetail.objects.get(relation=currentUser).Phonenumber
+            if stations != "":
+                context['station'] = stations.split('#')
+            if Phonenumber != "":
+                context['phone'] = Phonenumber
 
     return render(request,template,context)
 
@@ -161,37 +151,31 @@ def accountSettings(request):
     context =  {}
     check = False
 
-    for i in userDetail.objects.all():
-        if i.Username == request.user.username:
-            check = True
-            break
-        else:
-            check = False
-
-    if(request.method == 'POST'):
-        if check:
-            DETAIL = userDetail.objects.get(Username = request.user.username)
-            DETAIL.Firstname = request.POST['Firstname']
-            DETAIL.Lastname = request.POST['Lastname']
-            DETAIL.Gender = request.POST['Gender']
-            DETAIL.Email = request.POST['Email']
-            DETAIL.Phonenumber = request.POST['Phonenumber']
-            DETAIL.save()
-            return HttpResponseRedirect('/')
-
-        else:
-            settingForm = userInfo(request.POST)
-            if settingForm.is_valid():
-                settingForm.save()
-
-            return HttpResponseRedirect('/')
-
-    else:   
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            currentUser = User.objects.get(username=request.user.username)
+            DETAIL = userDetail.objects.get(relation=currentUser)
+            if DETAIL:
+                DETAIL.Firstname = request.POST['Firstname']
+                DETAIL.Lastname = request.POST['Lastname']
+                DETAIL.Gender = request.POST['Gender']
+                DETAIL.Email = request.POST['Email']
+                DETAIL.Phonenumber = request.POST['Phonenumber']
+                DETAIL.save()
+                return HttpResponseRedirect('/')
+            else:
+                settingForm = userInfo(request.POST)
+                if settingForm.is_valid():
+                    settingForm.save()
+                return HttpResponseRedirect('/')
+    else:
         settingForm = userInfo()
-        if check:
-                DETAIL = userDetail.objects.get(Username = request.user.username)
+        if request.user.is_authenticated:
+            currentUser = User.objects.get(username=request.user.username)
+            DETAIL = userDetail.objects.get(relation=currentUser)
+            if DETAIL:
                 context['detail'] = DETAIL
-        context['settingForm'] = settingForm
+            context['settingForm'] = settingForm
 
     return render(request,template,context)
 
@@ -199,43 +183,34 @@ def accountSettings(request):
 
 def accountAddress(request):
     template = 'subTemplate/address.html'
-    check = False
     Address = []
     AddressExist = True
 
-    for i in userDetail.objects.all():
-        if i.Username == request.user.username:
-            check = True
-            break
-        else:
-            check = False
+    context = {}
 
     if(request.method == 'POST'):
-        if check:
-            DETAIL = userDetail.objects.get(Username = request.user.username)
+        if request.user.is_authenticated:
+            currentUser = User.objects.get(username=request.user.username)
+            DETAIL = userDetail.objects.get(relation=currentUser)
             DETAIL.Address = request.POST['Address']
             DETAIL.save()
             return HttpResponseRedirect('/address')
 
-        else:
-            settingForm = userInfo(request.POST)
-            settingForm.save()
-            return HttpResponseRedirect('/address')
     else:
-        if check:
-            DETAIL = userDetail.objects.get(Username = request.user.username)
+        if request.user.is_authenticated:
+            currentUser = User.objects.get(username=request.user.username)
+            DETAIL = userDetail.objects.get(relation=currentUser)
             ADDRESSLIST = DETAIL.Address
             if ADDRESSLIST == '':
                 AddressExist = False
             else:
                 ADDRESS = ADDRESSLIST.split('#')
                 Address = ADDRESS
+            context['TotalAddress'] = ADDRESSLIST
 
-    context = {
-        'Address':Address,
-        'AddressExist' : AddressExist,
-        'TotalAddress':ADDRESSLIST
-    }    
+    context['Address'] = Address
+    context['AddressExist'] = AddressExist
+
     return render(request,template,context)
 
 
@@ -283,15 +258,10 @@ def cartDetail(request):
 def saveItem(request,code):
     result = 'true'
     check = False
-    for i in userDetail.objects.all():
-        if i.Username == request.user.username:
-            check = True
-            break
-        else:
-            check = False
 
-    if check:
-        DETAIL = userDetail.objects.get(Username = request.user.username)
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(Username=request.user.username)
+        DETAIL = userDetail.objects.get(relation=currentUser)
         previousSave = DETAIL.Saved
 
         if 'delete' in request.GET:
@@ -323,21 +293,17 @@ def saveItem(request,code):
 
 def savedItems(request):
     template = "subTemplate/savedItem.html"
-    check = False
     allSavedItem = []
     Exist = True
-    
-    for i in userDetail.objects.all():
-        if i.Username == request.user.username:
-            check = True
-            break
-        else:
-            check = False
 
-    if check:
-        DETAIL = userDetail.objects.get(Username = request.user.username)
-        savedItem = DETAIL.Saved    
-        pre_context = {
+    context = {}
+    
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(username=request.user.username)
+        DETAIL = userDetail.objects.get(relation=currentUser)
+        if DETAIL:
+            savedItem = DETAIL.Saved
+            pre_context = {
             'SupermarketModel' : SupermarketModel,
             'fashion' : FashionModel,
             'PhoneDeviceModel' : PhoneDeviceModel,
@@ -347,22 +313,24 @@ def savedItems(request):
             'WineModel' : WineModel,
             'UtensilModel' : UtensilModel,
             'book' : BookModel,
-        }
-    
-        if savedItem != '':
-            savedItem = savedItem.split(',')
+            }
+
+            if savedItem != '':
+                savedItem = savedItem.split(',')
 
             for i in savedItem:
                 modelTrail = i.split('-')
                 allSavedItem.append((pre_context[modelTrail[0]].objects.get(product_code=i)))
+
+            context['saveditems'] = savedItem
         else:
             Exist = False
-
-    context = {
-        'savedItem':allSavedItem,
-        'itemExist':Exist,
-        'saveditems':savedItem,
-    }
+    if len(allSavedItem) > 1:
+        context['savedItem'] = allSavedItem
+    else:
+        Exist = False
+        
+    context['itemExist'] = Exist
 
     return render(request,template,context)
 

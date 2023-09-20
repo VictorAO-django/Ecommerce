@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'beryl.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': 'BerylEcommerce',
-        #'USER': 'postgres',
-        #'PASSWORD': 'Ayomide2005',
-        'ENGINE': config('ENGINE'),
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'BerylEcommerce',
+        'USER': 'postgres',
+        'PASSWORD': 'Ayomide2005',
+        #'ENGINE': config('ENGINE'),
+        #'NAME': config('NAME'),
+        #'USER': config('USER'),
+        #'PASSWORD': config('PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5000',
     }

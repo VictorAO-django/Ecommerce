@@ -83,12 +83,22 @@
             <p>SELECT PICK-UP STATION</p>
             <div id="station">
                 <p>{{ user.username }}</p>
-                {% for point in station %}
-                    <p><input type="radio" name="address" onclick="checkoutAddress('{{ point }}')">{{ point }}</p>
-                {% endfor %}
+                {% if station %}
+                    {% for point in station %}
+                        <p><input type="radio" name="address" onclick="checkoutAddress('{{ point }}')">{{ point }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p><a href="/address">Please add at least one address to your account</a></p>
+                {% endif %}
             </div>
 
-            <p>PHONE | <span id="buyerPhoneNo">07063475466</span></p>
+            <p>PHONE | 
+                {% if phone %}
+                    <span id="buyerPhoneNo">{{ phone }}</span>
+                {% else %}
+                <span id="buyerPhoneNo"><a href="/settings">Please add a phone number to your account</a></span>
+                {% endif %}
+            </p>
 
             <div id="checkoutNotice">
                 <p>NOTICE</p>
@@ -97,6 +107,7 @@
             <form id="CheckoutDetail" method="post">
                 
                 {{ orderForm.as_p }}
+                <input name="Phonenumber" value="{{ phone }}">
                 {% csrf_token %}
             </form>
 

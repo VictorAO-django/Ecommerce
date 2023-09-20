@@ -1,7 +1,7 @@
 {% extends 'beryl.html' %}
 {% load static %}
 
-{% block title %} Beryl Cart Item {% endblock title %}
+{% block title %} My Saved Items {% endblock title %}
 
 {% block frame %}
     <section id="shoppingCart"><!--CSS-- Cart Container -->
@@ -43,7 +43,11 @@
                     </figure>
                     <p>Your haven't saved any item yet!</p>
                     <p>Found something you like? Tap the heart shaped 'save item' icon <br> to add it to your wishlist! <br>All your saved item will appear here.</p>
-                    <a href="/">CONTINUE SHOPPING</a>
+                    {% if user.is_authenticated %}
+                        <a href="/">CONTINUE SHOPPING</a>
+                    {% else %}
+                        <a onclick="alertUser('error','login or creat an account')">CONTINUE SHOPPING</a>
+                    {% endif %}
                 </div>
             {% endif %}
         </section>

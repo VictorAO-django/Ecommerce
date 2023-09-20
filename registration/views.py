@@ -63,23 +63,24 @@ def accountHistory(request):
         'book' : BookModel,
     }
 
-    currentUser = User.objects.get(username=request.user.username)
+    if request.user.is_authenticated:
+        currentUser = User.objects.get(username=request.user.username)
 
-    orders_by_user = orders.objects.filter(relation=currentUser)
+        orders_by_user = orders.objects.filter(relation=currentUser)
 
-    if orders_by_user:
-        Exist = True
-        context['exist'] = Exist
+        if orders_by_user:
+            Exist = True
+            context['exist'] = Exist
 
-    for order in orders_by_user:
-        currentItems = []
-        for item in order.items.split(','):
-            modelTrail = item.split('-')
-            productCode = item.split('(')
-            currentItems.append(pre_context[modelTrail[0]].objects.get(product_code=productCode[0]))
+        for order in orders_by_user:
+            currentItems = []
+            for item in order.items.split(','):
+                modelTrail = item.split('-')
+                productCode = item.split('(')
+                currentItems.append(pre_context[modelTrail[0]].objects.get(product_code=productCode[0]))
 
-        orderItems.append(currentItems)
+            orderItems.append(currentItems)
 
-    context['orderHistory'] = zip(orders_by_user,orderItems)
+        context['orderHistory'] = zip(orders_by_user,orderItems)
 
     return render(request,template,context)

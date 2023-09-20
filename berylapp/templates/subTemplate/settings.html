@@ -9,12 +9,16 @@
             <p id="userdetails"><!--CSS-- Setting detail-->
                 First Name<br>
                 <span>{% if detail %} {{ detail.Firstname }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
-                <a id="settingEdit" onclick="showSettingForm('firstname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% if user.is_authenticated %}
+                    <a id="settingEdit" onclick="showSettingForm('firstname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% endif %}
             </p>
             <p id="userdetails"><!--CSS-- Setting detail-->
                 Last Name<br>
                 <span>{% if detail %} {{ detail.Lastname }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
-                <a id="settingEdit" onclick="showSettingForm('lastname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% if user.is_authenticated %}
+                    <a id="settingEdit" onclick="showSettingForm('lastname')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% endif %}
             </p>
             <p id="userdetails"><!--CSS-- Setting detail-->
                 Username<br>
@@ -23,20 +27,30 @@
             <p id="userdetails"><!--CSS-- Setting detail-->
                 Gender<br>
                 <span>{% if detail %} {{ detail.get_Gender_display }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
-                <a id="settingEdit" onclick="showSettingForm('gender')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% if user.is_authenticated %}
+                    <a id="settingEdit" onclick="showSettingForm('gender')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% endif %}
             </p>
             <p id="userdetails"><!--CSS-- Setting detail-->
                 Email<br>
                 <span>{% if detail %} {{ detail.Email }} {% else %} --------- {% endif %}</span>
-                <a id="settingEdit" onclick="showSettingForm('email')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% if user.is_authenticated %}
+                    <a id="settingEdit" onclick="showSettingForm('email')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% endif %}
             </p>
             <p id="userdetails"><!--CSS-- Setting detail-->
                 Phone Number<br>
                 <span>{% if detail %} {{ detail.Phonenumber }} {% else %} --------- {% endif %}</span><!--CSS-- Detail Value -->
-                <a id="settingEdit" onclick="showSettingForm('phone')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% if user.is_authenticated %}
+                    <a id="settingEdit" onclick="showSettingForm('phone')"><img src="{% static 'edit.png' %}">Edit</a><!--CSS-- Each Account edit -->
+                {% endif %}
             </p>
             <div id="settingOption"><!--CSS-- Overall Setting container -->
-                <a onclick="showSettingForm('all')"><img src="{% static 'edit.png' %}">Edit All</a><!--CSS-- Overall Setting edit-->
+                {% if user.is_authenticated %}
+                    <a onclick="showSettingForm('all')"><img src="{% static 'edit.png' %}">Edit All</a><!--CSS-- Overall Setting edit-->
+                {% else %}
+                    <a onclick="alertUser('error','login or create an account')"><img src="{% static 'edit.png' %}">Edit All</a><!--CSS-- Overall Setting edit-->
+                {% endif %}
             </div>
         </section>
 
