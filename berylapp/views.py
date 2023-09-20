@@ -65,7 +65,7 @@ def productStore(request,store,pk):
     pre_context = {
         'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        'phone_device' : PhoneDeviceModel,
+        'phonedevice' : PhoneDeviceModel,
         'mug' : MugModel,
         'cake' : CakeModel,
         'appliance' : ApplianceModel,
@@ -89,14 +89,14 @@ def shoppingCart(request):
     Exist = True
     
     pre_context = {
-        'SupermarketModel' : SupermarketModel,
+        'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        'PhoneDeviceModel' : PhoneDeviceModel,
-        'MugModel' : MugModel.objects.all(),
+        'phonedevice' : PhoneDeviceModel,
+        'mug' : MugModel,
         'cake' : CakeModel,
-        'ApplianceModel' : ApplianceModel,
-        'WineModel' : WineModel,
-        'UtensilModel' : UtensilModel,
+        'appliance' : ApplianceModel,
+        'wine' : WineModel,
+        'utensil' : UtensilModel,
         'book' : BookModel,
     }
     
@@ -225,14 +225,14 @@ def cartDetail(request):
     result = int(0)
     
     pre_context = {
-        'SupermarketModel' : SupermarketModel,
+        'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        'PhoneDeviceModel' : PhoneDeviceModel,
-        'MugModel' : MugModel,
+        'phonedevice' : PhoneDeviceModel,
+        'mug' : MugModel,
         'cake' : CakeModel,
-        'ApplianceModel' : ApplianceModel,
-        'WineModel' : WineModel,
-        'UtensilModel' : UtensilModel,
+        'appliance' : ApplianceModel,
+        'wine' : WineModel,
+        'utensil' : UtensilModel,
         'book' : BookModel,
     }
 
@@ -304,14 +304,14 @@ def savedItems(request):
         if DETAIL:
             savedItem = DETAIL.Saved
             pre_context = {
-            'SupermarketModel' : SupermarketModel,
+            'supermarket' : SupermarketModel,
             'fashion' : FashionModel,
-            'PhoneDeviceModel' : PhoneDeviceModel,
-            'MugModel' : MugModel.objects.all(),
+            'phonedevice' : PhoneDeviceModel,
+            'mug' : MugModel,
             'cake' : CakeModel,
-            'ApplianceModel' : ApplianceModel,
-            'WineModel' : WineModel,
-            'UtensilModel' : UtensilModel,
+            'appliance' : ApplianceModel,
+            'wine' : WineModel,
+            'utensil' : UtensilModel,
             'book' : BookModel,
             }
 
@@ -343,14 +343,14 @@ def recentlyViewed(request):
     check = False
 
     pre_context = {
-        'SupermarketModel' : SupermarketModel,
+        'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        'PhoneDeviceModel' : PhoneDeviceModel,
-        'MugModel' : MugModel.objects.all(),
+        'phonedevice' : PhoneDeviceModel,
+        'mug' : MugModel,
         'cake' : CakeModel,
-        'ApplianceModel' : ApplianceModel,
-        'WineModel' : WineModel,
-        'UtensilModel' : UtensilModel,
+        'appliance' : ApplianceModel,
+        'wine' : WineModel,
+        'utensil' : UtensilModel,
         'book' : BookModel,
     }
     

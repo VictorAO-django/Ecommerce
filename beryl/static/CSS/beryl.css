@@ -108,8 +108,7 @@
     margin-left: 35px;}
 
     div[id='navigation_2']>ul{display: flex;/*Second Navigation UL*/
-    margin-left: auto;
-    padding: 0px 20px;}
+    margin-left: auto;}
 
     div[id='navigation_2']>ul>li{margin: 0px 20px;/*Second Navigation LI*/
     list-style-type: none;

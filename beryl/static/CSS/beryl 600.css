@@ -3,9 +3,12 @@
 
     div[id='NewtopImage']>img{transform: translate(-54%,0px);}
     
-    div[id='navigation_2']>p{width: 45%;}
+    div[id='navigation_2']>p{display: none;}
 
     a[id='secondLogo']{display: none;}
+
+    div[id='navigation_2']>ul{font-size: 11px;
+    padding: 0px 0px;}
 
     section[id='body']{display: flex;/*Page Main Body*/
     margin: 7px auto;
@@ -28,7 +31,7 @@
     margin: 0px 0px 15px 0px;
     border: 1px solid transparent;
     border-radius: 5px;
-    height: 230px;
+    height: 220px;
     overflow: hidden;}
     
     p[id='productClass']{background-color: #FEE2CC;/*Product Class Name*/
@@ -43,7 +46,8 @@
     overflow-x: scroll;
     margin-top: 8px;}
     
-    div[id='product']>a,div[id='productStore']>a{max-width: 110px;/*Item detail anchor*/
+    div[id='product']>a,div[id='productStore']>a{min-width: 110px;/*Item detail anchor*/
+    max-width: 110px;
     background-color: #fff;
     padding: 3px; 
     margin: 15px 15px;

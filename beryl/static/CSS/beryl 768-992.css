@@ -7,6 +7,8 @@
 
     a[id='menu']{display: none;}
 
+    div[id='navigation_2']>ul{padding: 0px 18px;}/*Second Navigation UL*/
+
     section[id='body']{display: flex;/*Page Main Body*/
     margin: 4px auto;
     width: 96%;

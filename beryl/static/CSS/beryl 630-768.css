@@ -5,6 +5,8 @@
 
     div[id='navigation_2']>p{width: 25%;}
 
+    div[id='navigation_2']>ul{padding: 0px 15px;}/*Second Navigation UL*/
+
     section[id='body']{display: flex;/*Page Main Body*/
     margin: 7px auto;
     width: 96%;

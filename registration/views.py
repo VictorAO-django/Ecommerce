@@ -52,14 +52,14 @@ def accountHistory(request):
     Exist = False
 
     pre_context = {
-        'SupermarketModel' : SupermarketModel,
+        'supermarket' : SupermarketModel,
         'fashion' : FashionModel,
-        'PhoneDeviceModel' : PhoneDeviceModel,
-        'MugModel' : MugModel.objects.all(),
+        'phonedevice' : PhoneDeviceModel,
+        'mug' : MugModel,
         'cake' : CakeModel,
-        'ApplianceModel' : ApplianceModel,
-        'WineModel' : WineModel,
-        'UtensilModel' : UtensilModel,
+        'appliance' : ApplianceModel,
+        'wine' : WineModel,
+        'utensil' : UtensilModel,
         'book' : BookModel,
     }
 

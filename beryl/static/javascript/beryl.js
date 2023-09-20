@@ -416,7 +416,7 @@ function sideBar(mode){
 }
 
 function Preload(notify){
-    this.notify = notify || "setting up in progress"
+    this.notify = notify || "setting up in page"
 
     this.show = function(){
         var container = document.createElement('div') 
@@ -450,7 +450,7 @@ function Preload(notify){
 
 }
 var preloadertrail = true
-var Preloader = new Preload('setting up in progress')
+var Preloader = new Preload('setting up page')
 function showPreload(){
     if(preloadertrail){
         Preloader.show()
