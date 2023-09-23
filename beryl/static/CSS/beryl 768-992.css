@@ -1,13 +1,21 @@
 @media(min-width:768px) and (max-width:992px){
-    div[id='topImage']>img{transform: translate(52.5%,0px);}
-
-    div[id='NewtopImage']>img{transform: translate(-52.5%,0px);}
+    a[id='name']{font-size: 14px;}
+    
+    ul[id='topNav']>li{font-size: 13px;}
 
     div[id='navigation_2']>p{width: 35%;}
 
     a[id='menu']{display: none;}
 
+    div[id='navigation_2']>div>a:first-of-type{width: 25px;/*Menu anchor*/
+    height: 25px;}
+
     div[id='navigation_2']>ul{padding: 0px 18px;}/*Second Navigation UL*/
+
+    div[id='navigation_2']>ul>li{font-size: 13px;
+    margin: 0px 18px;}
+
+    img[id='navIcon']{width: 20px;}
 
     section[id='body']{display: flex;/*Page Main Body*/
     margin: 4px auto;
@@ -16,10 +24,20 @@
     align-items: stretch;
     overflow: hidden;}
 
+    ul[id='sideUl']{width: 200px;}
+
     div[id='sideBar']{border-radius: 5px;/*Page Side Bar*/
     overflow: hidden;
     flex-basis: 200px;
     background-color: #fff;}
+
+    ul[id='sideUl']>p{font-size: 11px;}
+
+    img[id='sideIcon']{width: 25px;}
+    
+    .sideLi{font-size: 13px;}
+
+    div[id='frame']{margin-left: 8px;/*Page Main Frame*/}
 
     /*ROOT PAGE*/
     section[id='product']{background-color: #fff;/*Product Container*/
@@ -238,7 +256,7 @@
     margin-bottom: 50px;
     align-self: center;}
     
-    div[id='emptyCart']>figure{width: 80px;
+    div[id='emptyCart']>figure{width: 60px;
     padding: 20px;
     border-radius: 100px;
     overflow: hidden;
@@ -250,7 +268,7 @@
     div[id='emptyCart']>p:first-of-type{font-family: MontserratMedium;
     text-align: center;}
     div[id='emptyCart']>p:last-of-type{font-family: MontserratRegular;
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
     line-height: 20px;
     margin-bottom: 10px;}
@@ -260,12 +278,20 @@
     color: #fff;
     padding: 3px 50px;
     border-radius: 3px;
-    font-size: 14px;}
+    font-size: 12.5px;}
     
     div[id='emptyCart']>a:hover{background-color: #d8870d;}
     /*END CART PAGE*/
 
     /*ADDRESS*/
+    div[id='addressEffect']>a{font-size: 13px;}
+
+    div[id='addressEffect']>a>img{width: 20px;}
+
+    a[id='addAddress']{font-size: 13px;}
+    
+    a[id='addAddress']>img{width: 25px;}
+
     section[id='address']{flex-flow: column nowrap;}
 
     section[id='addressPart-1']{margin-left: 20px;/*Adress Part 1*/
@@ -294,6 +320,36 @@
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-content: space-between;}
+
+    p[id='userdetails']{font-size: 13px;
+    font-family: MontserratMedium;}
+
+    p[id='userdetails']>span{font-size: 11px;}
+
+    a[id='settingEdit']{font-family: MontserratMedium;
+    font-size: 12px;}
+
+    a[id='settingEdit']{font-size: 12px;}
+
+    div[id='settingOption']>a{width: 140px;
+    font-size: 13px;}
+
+    a[id='settingEdit']>img{width: 14px;/*Each Account edit icon*/
+    height: 14px;}
+
+    div[id='settingOption']>a>img{width: 18px;/*Overall setting edit icon*/
+    height: 18px;}
+    
+    a[id='close']{width: 23px;}
+
+    form[id='settingForm']>p>label{font-family: MontserratMedium;/*Account Setting label*/
+    font-size: 12px;}
+
+    form[id='settingForm']>p>input,form[id='settingForm']>p>select{font-size: 12px;}
+    
+    form[id='settingForm']>input{width: 85%;
+    font-family: MontserratMedium;
+    font-size: 12px;}
 
     section[id='settings_part1']{width: 70%;}
 
@@ -350,27 +406,111 @@
     div[id='developerInfo']>section>div>p>span{margin: 4px 0px;}
 
     div[id='footerThings']>div>p{font-size: 13px;}
+
+    p[id='comment']{font-size: 12px;}
+
+    div[id='mailUs']>form>input{height: 22px;}
+
+    p[id='submitComment']>input{padding: 8px 11px;}
+
+    div[id='developerInfo']>section>a>img{width: 130px;}
+
+    div[id='developerInfo']>section>div>p{font-size: 12px;}
+
+    div[id='developerInfo']>section>div>p>span{font-size: 11px;}
+
+    div[id='contacts']>a>img{width:23px;}
+    
+    div[id='right']{font-size: 12px;}
     /*END FOOTER*/
 
 
 
     /*HISTORY*/
     section[id='history']>div:nth-of-type(2){justify-content: flex-start;}
+
+    p[id='checkoutDate']{font-size: 12.5px;}
+
+    p[id='statusSuccess'],p[id='statusFail'],p[id='statusProgress']{font-size: 12.5px;}
+
+    p[id='checkoutDate']{font-size: 12px;}
+
+    div[id='cartItems']{width: 150px;}
+
+    figure[id='itemPics']{width: 110px;}/*History Selected Item Figure*/
+    
+    p[id='historyPrice']{font-family: MontserratMedium;/*History Total Price*/
+    font-size: 12px;}
+
     /*END HISTORY*/
 
 
+    /*CHECKOUT*/
+    section[id='ConfirmCheckOut']>section{width: 75%;}
 
+    section[id='ConfirmCheckOut']>section>p{font-family: MontserratMedium;
+    font-size: 13px;}
+
+    div[id='cartDetails']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+
+    div[id='station']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+
+    a[id='confirm']{font-family: MontserratMedium;
+    font-size: 14px;
+    width: 90%;}
+
+    div[id='checkoutNotice']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+    /*CHECKOUT*/
 
 
 
 
 
     /*STYLE THAT RESPOND TO SCRIPT ACTION*/
+    div[id='popContainer']{width:90px;}
+
+    a[id='popOption']{font-size: 12px;}
+    
     div[id='detailContainer']{width: 320px;}
 
     #OdetailContainer{width: 320px;}
 
+    img[id='closeView']{width: 25px;
+    margin: 3px 18px;}
+
+    p[id='productclass']{font-size: 13px;}
+
+    figure[id='productFigure']{width: 50%}
+
+    div[id='productDetail']{width: 65%;
+    margin-top: 10px;}
+
+    div[id='productDetail']>p{font-size: 13px;}
+
+    a[id='addToCart']{width: 65%;
+    height: 30px;}
+
+    div[id='addImgBox']{width: 30px;
+    height: 30px;}
+
+    p[id='addStatement']{font-size: 14px;}
+    
+    div[id='notice']{font-size: 12px;}
+
+    div[id='dialogboxsuccess'],div[id='dialogboxerror']{font-size: 13px;}
+
+    div[id='dialogboxsuccess'],div[id='dialogboxerror']{font-size: 12.5px;}
+
     /*ADD ADDRESS*/
     form[id='addAdressForm'],form[id='mainAddAdressForm']{position: sticky;
-    top: 20px;}
+    top: 20px;
+    margin: 35px 0px 0px 30px;
+    width: 280px;}
+
+    a[id='addNewAddress']{font-size: 13px;}
+    
+    form[id='addAdressForm']>input{font-size: 12px;}
     }

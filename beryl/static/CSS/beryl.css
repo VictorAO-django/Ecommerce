@@ -2,7 +2,9 @@
 @import url(beryl\ 992-1200.css);
 @import url(beryl\ 768-992.css);
 @import url(beryl\ 630-768.css);
-@import url(beryl\ 600.css);
+@import url(beryl\ 400-630.css);
+@import url(beryl\ 300-400.css);
+@import url(Topimage.css);
 
 @font-face {
     font-family: 'MontserratRegular';
@@ -24,7 +26,8 @@
     body{margin: 0px;
     background-color: #EFECF7;
     display: flex;
-    flex-flow: column;}
+    flex-flow: column;
+    overflow-x: hidden;}
 
     a{text-decoration: none;}
 
@@ -48,10 +51,9 @@
     ul[id='topNav']{display: flex;/*Top Navigation Ul*/
     margin-left: auto;
     list-style-type: none;}
-
+    
     ul[id='topNav']>li{margin: 0px 15px;/*Top Navigation Li*/
     font-family: MontserratMedium;
-    font-size: 13px;
     letter-spacing: 0.5px;}
 
     ul[id='topNav']>li>a{color: #121212;}/*Top Nav Anchor*/
@@ -61,7 +63,7 @@
     min-height: 200px;
     display: flex;
     padding: 0px;
-    margin-top: -3px;
+    margin-top: 0px;
     align-items: center;
     justify-content: space-around;
     overflow: hidden;}
@@ -94,9 +96,8 @@
     flex-flow: row nowrap;
     align-items: center;}
 
-    div[id='navigation_2']>div>a:first-of-type{width: 25px;/*Menu anchor*/
-    height: 25px;
-    margin-left:15px;}
+    div[id='navigation_2']>div>a:first-of-type{margin-left:15px;/*Menu anchor*/}
+
     div[id='navigation_2']>div>a:last-of-type{width: 70px;/*Brand Logo image anchor*/
     height: 30px;
     margin-left: 15px;}
@@ -110,16 +111,13 @@
     div[id='navigation_2']>ul{display: flex;/*Second Navigation UL*/
     margin-left: auto;}
 
-    div[id='navigation_2']>ul>li{margin: 0px 20px;/*Second Navigation LI*/
-    list-style-type: none;
+    div[id='navigation_2']>ul>li{list-style-type: none;/*Second Navigation LI*/
     display: flex;
     align-items: center;
     font-family: MontserratRegular;
-    font-size: 13px;
     letter-spacing: 0.5px;}
-
-    img[id='navIcon']{width: 20px;/*Second Navigation icon*/
-    margin: 0px 3px;}
+    
+    img[id='navIcon']{margin: 0px 3px;/*Second Navigation icon*/}
 
     div[id='navigation_2']>ul>li>a{color: #121212;/*Second Navigation anchor*/
     cursor:pointer;}
@@ -131,7 +129,6 @@
     ul[id='sideUl']{list-style-type: none;/*Side UL*/
     background-color: #fff;
     padding: 0px;
-    width: 200px;
     display: flex;
     margin: 0px;
     flex-flow: column nowrap;
@@ -154,17 +151,14 @@
     padding: 2px 8px;
     border-top: 1px solid #12121211;}
 
-    img[id='sideIcon']{width: 25px;/*side icon*/
-    margin: 0px 4px;}
+    img[id='sideIcon']{margin: 0px 4px;/*side icon*/}
 
     .sideLi{font-family: MontserratRegular;/*Side Li*/
-    font-size: 13px;
     color: #121212;
     display: flex;
     align-items: center;}
 
-    div[id='frame']{width: 50%;/*Page Main Frame*/
-    margin-left: 8px;
+    div[id='frame']{width: 50%;/*Page Main Frame*/    
     flex-grow: 1;}
 
 
@@ -197,12 +191,10 @@
     padding: 3px;}
     
     p[id='checkoutDate']{font-family: MontserratRegular;/*History date*/
-    font-size: 13px;
     margin: 0px 2px;}
     
     p[id='statusSuccess'],p[id='statusFail'],p[id='statusProgress']{margin: 0px 10px;/*History Status*/
     font-family: MontserratRegular;
-    font-size: 13px;
     text-transform: capitalize;
     letter-spacing: 1px;}
     
@@ -219,10 +211,7 @@
     flex-flow: column nowrap;
     align-items: center;
     margin: 5px 3px;
-    overflow: hidden;
-    width: 160px;}
-    
-    figure[id='itemPics']{width: 120px;}/*History Selected Item Figure*/
+    overflow: hidden;}
     
     figure[id='itemPics']>img{max-width: 100%;}/*History Selected Item Image*/
     
@@ -235,8 +224,6 @@
     margin: 3px 0px;}
     
     p[id='historyPrice']{margin: 3px 25px;/*History Total Price*/
-    font-family: MontserratMedium;
-    font-size: 13px;
     color: #b16d07;}
     
     a[id='reCheckOut']{background-color: #FE9900;/*History recheckout anchor*/
@@ -286,18 +273,16 @@
     
     div[id='addressEffect']>a{color: #b16d07;
     font-family: MontserratMedium;
-    font-size: 13px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
     margin: 3px 10px;
     cursor: pointer;}
-    
+
     div[id='addressEffect']>a:hover{color: #FE9900;}
     
-    div[id='addressEffect']>a>img{width: 20px;
-    margin: 2px;}
+    div[id='addressEffect']>a>img{margin: 2px;}
 
     a[id='addAddress']{padding: 0px 0px;
     margin: 30px;
@@ -307,12 +292,10 @@
     border-radius: 5px;
     justify-content: space-between;
     font-family: MontserratMedium;
-    font-size: 13px;
     padding-right: 7px;
     cursor: pointer;}
     
-    a[id='addAddress']>img{width: 25px;
-    background-color: #12121215;
+    a[id='addAddress']>img{background-color: #12121215;
     padding: 3px;
     margin-right: 7px;}
     /*END ADDRESS*/
@@ -331,48 +314,36 @@
     flex-flow: column nowrap;
     align-items: flex-start;
     margin-bottom: 20px;}
-    
-    p[id='userdetails']{font-family: MontserratMedium;/*Setting detail*/
-    font-size: 14px;
+
+    p[id='userdetails']{/*Setting detail*/
     width: 100%;
     border: 1px solid #12121228;
     padding: 3px 0px 3px 10px;}
     
-    p[id='userdetails']>span{font-family: MontserratRegular;/*Detail value*/
-    font-size: 13px;}
+    p[id='userdetails']>span{font-family: MontserratRegular;/*Detail value*/}
     
     a[id='settingEdit']{color: #b16d07;/*Each Account edit*/
     font-family: MontserratMedium;
-    font-size: 13px;
     cursor: pointer;
     display: flex;
     margin: 3px 0px;}
     
     a[id='settingEdit']:hover{color: #FE9900;}/*Each Account edit*/
     
-    a[id='settingEdit']>img{width: 15px;/*Each Account edit icon*/
-    height: 15px;}
-    
     div[id='settingOption']{color: #121212;/*Overall Setting Container*/
     display: flex;}
     
     div[id='settingOption']>a{background-color: #fdb74fc7;/*Overall Setting edit*/
     border-radius: 4px;
-    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: MontserratMedium;
-    font-size: 13px;
     padding: 2px;
     filter: drop-shadow(0px 0px 3px #96969693);
     cursor: pointer;}
     
-    div[id='settingOption']>a>img{width: 20px;/*Overall setting edit icon*/
-    height: 20px;}
-    
     a[id='close']{margin-left: auto;
-    width: 28px;
     margin-bottom: -10px;}
 
     a[id='close']>img{max-width: 100%;}
@@ -381,9 +352,8 @@
     display: none;
     flex-flow: column;
     justify-content: space-around;}
-    
-    form[id='settingForm']>p>label{font-family: MontserratMedium;/*Account Setting label*/
-    font-size: 12px;
+
+    form[id='settingForm']>p>label{/*Account Setting label*/
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -394,16 +364,14 @@
     padding: 2px 0px;
     border-radius: 3px;
     border:1px solid #12121242;
-    font-family: MontserratRegular;
-    font-size: 13px;}
+    font-family: MontserratRegular;}
     
-    form[id='settingForm']>input{width: 90%;/*Account setting submit*/
+    form[id='settingForm']>input{/*Account setting submit*/
     background: #FE9900;
     border-color: transparent;
     border-radius: 3px;
     display: none;
     justify-content: space-around;
-    font-family: MontserratMedium;
     cursor: pointer;}
     /*END SETTINGS*/
     
@@ -427,15 +395,13 @@
     div[id='mailUs']>form{display: flex;
     flex-flow: column nowrap;}
     
-    div[id='mailUs']>form>input{height: 25px;
-    border-radius: 2px;
+    div[id='mailUs']>form>input{border-radius: 2px;
     border:1px solid transparent;
     margin-bottom: 7px;}
-    
+
     p[id='comment']{font-family: MontserratMedium;
     text-transform: uppercase;
     color: #fff;
-    font-size: 13px;
     letter-spacing: 1px;}
     
     p[id='submitComment']{display: flex;
@@ -455,7 +421,6 @@
     border: 1px solid #fff;
     color: #fff;
     font-family: MontserratRegular;
-    padding: 10px 13px;
     cursor: pointer;}
     
     div[id='developerInfo']{
@@ -469,8 +434,7 @@
     padding: 12px;
     align-items: center;}
     
-    div[id='developerInfo']>section>a>img{width: 150px;
-    border-radius: 100px;
+    div[id='developerInfo']>section>a>img{border-radius: 100px;
     margin-right: 20px;}
     
     div[id='developerInfo']>section>div{display: flex;
@@ -481,18 +445,16 @@
     font-family: MontserratRegular;
     display: flex;
     flex-flow: column;
-    font-size: 13px;
     letter-spacing: 0.5px;}
     
     div[id='developerInfo']>section>div>p>span{color: #ee950f;
     font-family: MontserratMedium;
-    font-size: 12px;
     text-transform: uppercase;}
     
     div[id='contacts']{margin-top: 6px;
     display: flex;
     justify-content: space-around;}
-    div[id='contacts']>a>img{width:25px;}
+
     div[id='contacts']>a>img{max-width: 100%;}
     
     footer>section:last-of-type{background-color: #535257;
@@ -519,17 +481,18 @@
 
     div[id='right']{color: #fff;
     font-family: MontserratRegular;
-    letter-spacing: 0.5px;
-    font-size: 13px;
+    letter-spacing: 1px;
     display: flex;
     justify-content: space-around;}
     
-    div[id='right']>p{width: 60%;
+    div[id='right']>p{width: 80%;
     border-top: 1px solid #fff;
     text-align: center;
     padding: 5px 0px;}
     /*END FOOTER*/
     
+
+    /*CHECKOUT*/
     section[id='ConfirmCheckOut']{position: fixed;
     z-index: 120;
     background-color: #1212124d;
@@ -545,14 +508,11 @@
     align-items: center;
     border-radius: 4px;
     background-color: #EFECF7;
-    width: 70%;
-    min-height: 500px;
+    min-height: 450px;
     }
 
     section[id='ConfirmCheckOut']>section>p{
     padding: 8px 20px;
-    font-family: MontserratMedium;
-    font-size: 13px;
     letter-spacing: 0.5px;
     color:#5352579f;
     margin-bottom: 2px;
@@ -570,8 +530,6 @@
 
     div[id='cartDetails']>p{width: 96%;
     margin: 7px 0px;
-    font-family: MontserratRegular;
-    font-size: 13px;
     display: flex;
     }
 
@@ -588,12 +546,11 @@
     align-items: center;
     border-radius: 4px;
     padding: 5px 0px;
+    text-align: center;
     }
 
     div[id='station']>p{width: 96%;
-    font-family: MontserratRegular;
     text-transform: capitalize;
-    font-size: 13px;
     margin-bottom: 4px;
     margin-top: 4px;
     }
@@ -602,10 +559,7 @@
 
     form[id='CheckoutDetail']{display: none;}
 
-    a[id='confirm']{font-family: MontserratMedium;
-    background-color: #FE9900;
-    font-size: 14px;
-    width: 90%;
+    a[id='confirm']{background-color: #FE9900;
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
@@ -618,9 +572,7 @@
     width: 96%;
     }
 
-    div[id='checkoutNotice']>p{font-family: MontserratRegular;
-    font-size: 13px;
-    text-align: center;
+    div[id='checkoutNotice']>p{text-align: center;
     margin: 5px 0px;}
 
     div[id='checkoutNotice']>p:first-of-type{color: #bd2828;}
@@ -638,7 +590,6 @@
     /*STYLE THAT RESPOND TO SCRIPT ACTION*/
     div[id='popContainer']{position: absolute;/*POPOPTION CONTAINER*/
     background-color: #fff;
-    width: 100px;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -655,13 +606,12 @@
     text-transform: capitalize;
     letter-spacing: 0.5px;
     padding: 3px 0px;
-    border-bottom: 1px solid #96969636;
-    font-size: 12px;}
+    border-bottom: 1px solid #96969636;}
     
     a[id='popOption']:hover{color: #6AC1D5;}/*POPOPTION ANCHOR*/
     
     div[id='detailContainer']{background-color: #fff;
-    filter: drop-shadow(0px 0px 5px #969696a1);
+    filter: drop-shadow(0px 0px 5px #96969681);
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -674,7 +624,7 @@
     z-index: 100;}
     
     #OdetailContainer{background-color: #fff;
-    filter: drop-shadow(0px 0px 5px #969696a1);
+    filter: drop-shadow(0px 0px 5px #96969681);
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -691,22 +641,18 @@
     height: 100%;
     display: flex;
     align-items: center;}
-    
+
     img[id='closeView']{align-self: flex-end;
-    width: 25px;
-    margin: 3px 18px;
     cursor: pointer;}
     
     p[id='productclass']{font-family: MontserratRegular;
-    font-size: 13px;
     letter-spacing: 0.5px;
     background-color: #FEE2CC;
     width: 98%;
     padding: 4px;
     margin: 0px;}
     
-    figure[id='productFigure']{width: 60%;
-    border: 1px solid #9696963a;
+    figure[id='productFigure']{border: 1px solid #9696963a;
     border-width: 1px 0px 1px 0px;
     display: flex;
     justify-content: space-around;}
@@ -714,25 +660,20 @@
     img[id='productImage']{max-width: 80%;}
     
     div[id='productDetail']{display: flex;
-    flex-flow: column nowrap;
-    width: 80%;
-    margin-top: 10px;}
+    flex-flow: column nowrap;}
     
     div[id='productDetail']>p{font-family: MontserratRegular;
-    font-size: 13px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #9696965e;
     padding: 2px;}
-    
+
     div[id='productDetail']>p>span{width: 40%;
     max-width: 40%;}
     
     span[id='price']{text-decoration: line-through;}
     
     a[id='addToCart']{background-color: #FE9900;
-    width: 80%;
-    height: 30px;
     margin-top: 5px;
     display: flex;
     align-items: center;
@@ -746,8 +687,6 @@
     div[id='addImgBox']{display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 30px;
-    height: 30px;
     background-color: #b16d07;}
     
     div[id='addImgBox']>img{max-width: 80%;
@@ -760,7 +699,6 @@
     justify-content: space-around;
     font-family: MontserratMedium;
     color: #fff;
-    font-size: 14px;
     letter-spacing: 1px;}
     
     a[id='quantityContainerItem']{
@@ -812,7 +750,7 @@
     align-items: center;
     justify-content: space-around;
     font-family: MontserratMedium;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;}
     
     div[id='notice']{display: flex;
@@ -822,11 +760,10 @@
     border: 1px solid #9696965e;
     border-radius: 3px;
     width: 90%;
-    font-family: MontserratMedium;
-    font-size: 12px;}
+    font-family: MontserratMedium;}
     
-    div[id='notice']>img{width: 30px;
-    height: 30px;}
+    div[id='notice']>img{width: 25px;
+    height: 25px;}
     
     div[id='notice']>p{height: 100%;
     display: flex;
@@ -846,7 +783,6 @@
     text-align: center;
     color: #fff;
     font-family: MontserratRegular;
-    font-size: 13px;
     letter-spacing: 0.5px;
     z-index: 125;}
     
@@ -859,8 +795,6 @@
     /*ADD ADDRESS*/
     form[id='addAdressForm'],form[id='mainAddAdressForm']{display: flex;
     flex-flow: column;
-    margin: 40px 0px 0px 30px;
-    width: 300px;
     padding: 5px;}
     
     form[id='mainAddAdressForm']{margin-top: -10px;}
@@ -870,19 +804,17 @@
     border-radius: 5px;
     cursor: pointer;
     font-family: MontserratRegular;
-    font-size: 14px;
     padding: 2px 0px;
     justify-content: space-around;}
     
     a[id='addNewAddress']:hover{background-color: #d88b17;}
-    
+
     form[id='addAdressForm']>input[name]{margin: 8px 0px;
     padding: 3px;
     border: 1px solid #12121248;
     background-color: #EFECF7;
     border-radius: 3px;
     text-transform: capitalize;
-    font-size: 12px;
     font-family: MontserratRegular;
     font-style: italic;}
     

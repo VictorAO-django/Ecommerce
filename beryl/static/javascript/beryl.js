@@ -61,7 +61,7 @@ function popOption(elemID,Ooptions){//+++Create an Object with two parameters. t
     }
 }
 
-function showPopOption(ID,Ocase){
+function showPopOption(ID){
     if(ID == 'username'){
         var param
         if(document.getElementById('checkUser')){
@@ -70,10 +70,16 @@ function showPopOption(ID,Ocase){
             param = ['settings','login']
         }
         var pop = new popOption(ID,param)
-        if(Ocase == 'focus'){
-            pop.Ofocus()
-        }
+        pop.Ofocus()
+        document.getElementById(ID).href = "javascript:hidePopOption('username')"
     }
+}
+function hidePopOption(ID){
+    if(ID ='username'){
+        var pop = new popOption()
+        pop.Oblur()
+        document.getElementById(ID).href = "javascript:showPopOption('username')"
+    } 
 }
 //++++++++++++++++++THIS IS FOR THE SWITCHING EFFECT OF THE TOP DISPLAY IMAGE++++++++++++++++//
 
@@ -380,7 +386,7 @@ function decideDisplayImage(){
     const banner1 = document.getElementById('banner1');
     const banner2 = document.getElementById('banner2');
     
-    if(window.innerWidth >= 1300 && window.innerWidth <1400){
+    if(window.innerWidth >= 1300){
         banner1.src = imageUrl1 + 1300 + imageUrl2;
         banner2.src = imageUrl1 + 1300 + imageUrl2;
     }else if(window.innerWidth >= 1200 && window.innerWidth <1300){
@@ -401,9 +407,18 @@ function decideDisplayImage(){
     }else if(window.innerWidth >= 550 && window.innerWidth <700){
         banner1.src = imageUrl1 + 700 + imageUrl2;
         banner2.src = imageUrl1 + 700 + imageUrl2;
-    }else if(window.innerWidth >= 350 && window.innerWidth <550){
+    }else if(window.innerWidth >= 450 && window.innerWidth <550){
         banner1.src = imageUrl1 + 500 + imageUrl2;
         banner2.src = imageUrl1 + 500 + imageUrl2;
+    }else if(window.innerWidth >= 400 && window.innerWidth <450){
+        banner1.src = imageUrl1 + 400 + imageUrl2;
+        banner2.src = imageUrl1 + 400 + imageUrl2;
+    }else if(window.innerWidth >= 350 && window.innerWidth <450){
+        banner1.src = imageUrl1 + 350 + imageUrl2;
+        banner2.src = imageUrl1 + 350 + imageUrl2;
+    }else if(window.innerWidth >= 300 && window.innerWidth <350){
+        banner1.src = imageUrl1 + 300 + imageUrl2;
+        banner2.src = imageUrl1 + 300 + imageUrl2;
     }
 }
 
@@ -493,7 +508,7 @@ function confirmed(){
 
 
 document.addEventListener("DOMContentLoaded",function(){
-    showPreload()
+    //showPreload()
 
     if(document.cookie.indexOf('cart') == -1){
         document.cookie = "cart = "
@@ -517,5 +532,7 @@ document.addEventListener("DOMContentLoaded",function(){
 })
 
 window.onresize = function(){
-    location.reload()
+    decideDisplayImage()
+    document.getElementById('detailContainer').style.height = window.innerHeight + 'px'
+    document.getElementById('detailContainer').style.left = window.innerWidth + 'px'
 }

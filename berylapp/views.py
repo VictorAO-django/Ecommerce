@@ -57,7 +57,7 @@ def productStore(request,store,pk):
     }
 
     if request.user.is_authenticated:
-        currentUser = User.objects.get(Username=request.user.username)
+        currentUser = User.objects.get(username=request.user.username)
         DETAIL = userDetail.objects.get(relation=currentUser)
         previousSave = DETAIL.Saved
         context['saveditems'] = previousSave
@@ -336,7 +336,7 @@ def savedItems(request):
 
 
 def recentlyViewed(request):
-    template = 'subTemplate/productstore.html'
+    template = 'subTemplate/productStore.html'
     RecentView = request.COOKIES['recentview']
     AllRecentView = []
     Exist = True

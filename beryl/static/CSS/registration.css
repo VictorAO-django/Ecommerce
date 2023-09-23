@@ -47,8 +47,7 @@ margin-top: 0px;
 text-align: center;}
 
 form{display: flex;
-flex-flow: column nowrap;
-width: 300px;}
+flex-flow: column nowrap;}
 
 /*form[id='settingForm']>p:first-of-type{display: none;}*/
 
@@ -58,14 +57,12 @@ margin: 5px 0px;}
 
 form>p>label{color: #121212;
 font-family: MontserratRegular;
-font-size: 13px;
 letter-spacing: 0.5px;}
 
 form>p>input{border: 1.5px solid #FE9900;
 border-radius: 4px;
 background-color: #EFECF7;
-font-family: MontserratRegular;
-height: 25px;}
+font-family: MontserratRegular;}
 
 form>p>select{border: 1.5px solid #FE9900;
 border-radius: 4px;
@@ -73,12 +70,10 @@ background-color: #EFECF7;
 font-family: MontserratRegular;
 height: 25px;}
 
-form>input{height: 40px;
-background-color: #FE9900;
+form>input{background-color: #FE9900;
 border-color: transparent;
 border-radius: 4px;
 color: #fff;
-font-family: MontserratMedium;
 letter-spacing: 1px;}
 
 form>input:hover{background-color: #d88c1b;}
@@ -95,7 +90,6 @@ ul{display: flex;
 flex-flow: column nowrap;
 margin: 0px;
 font-family: MontserratRegular;
-font-size: 13px;
 color: #bd2828;
 list-style-type: none;
 padding: 0px;
@@ -119,3 +113,60 @@ text-align: center;
 text-transform: capitalize;}
 
 a[id='skipbutton']:hover{background-color: #d88c1b;}
+
+@media(min-width:630px){
+    form{width: 300px;}
+
+    form>input{height: 40px;
+    font-family: MontserratMedium;
+    }
+
+    form>p>label{font-size: 13px;}
+
+    form>p>input{height: 25px;}
+
+    p[id='firstStatement']{font-size: 17px;}
+    p[id='secondStatement']{font-size: 14px;}
+
+    ul{font-size: 13px;}
+}
+
+@media(min-width:500px) and (max-width:630px){
+    form{width: 280px;}
+
+    form>input{height: 35px;
+    font-family: MontserratMedium;
+    }
+
+    form>p>label{font-size: 12px;}
+
+    form>p>input{height: 20px;}
+
+    p[id='firstStatement']{font-size: 14px;}
+    p[id='secondStatement']{font-size: 12px;}
+
+    form>p>input{font-size: 12.5px;}
+
+    ul{font-size: 12px;
+    line-height: 18px;}
+}
+
+@media(min-width:300px) and (max-width:500px){
+    form{width: 250px;}
+
+    form>input{height: 25px;
+    font-family: MontserratRegular;
+    }
+
+    form>p>label{font-size: 11.5px;}
+
+    form>p>input{height: 20px;}
+
+    p[id='firstStatement']{font-size: 13px;}
+    p[id='secondStatement']{font-size: 12px;}
+
+    form>p>input{font-size: 11px;}
+
+    ul{font-size: 12px;
+    line-height: 18px;}
+}

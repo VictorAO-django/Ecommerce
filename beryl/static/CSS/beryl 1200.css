@@ -1,13 +1,22 @@
 @media(min-width:1200px){
-    div[id='topImage']>img{transform: translate(51.5%,0px);}
 
-    div[id='NewtopImage']>img{transform: translate(-51.5%,0px);}
+    a[id='name']{font-size: 14px;}
+
+    ul[id='topNav']>li{font-size: 13px;}
 
     div[id='navigation_2']>p{width: 40%;}
 
     a[id='menu']{display: none;}
 
+    div[id='navigation_2']>div>a:first-of-type{width: 25px;/*Menu anchor*/
+    height: 25px;}
+
     div[id='navigation_2']>ul{padding: 0px 20px;}/*Second Navigation UL*/
+
+    div[id='navigation_2']>ul>li{font-size: 13px;
+    margin: 0px 20px;}
+
+    img[id='navIcon']{width: 20px;}
 
     section[id='body']{display: flex;/*Page Main Body*/
     margin: 4px auto;
@@ -20,6 +29,16 @@
     flex-shrink: 0;
     flex-basis: 230px;
     background-color: #fff;}
+
+    ul[id='sideUl']{width: 200px;}
+
+    ul[id='sideUl']>p{font-size: 11px;}
+
+    img[id='sideIcon']{width: 25px;}
+    
+    .sideLi{font-size: 13px;}
+
+    div[id='frame']{margin-left: 8px;/*Page Main Frame*/}
 
 
     /*ROOT PAGE*/
@@ -283,6 +302,14 @@
     /*END CART PAGE*/    
 
     /*ADDRESS*/
+    div[id='addressEffect']>a{font-size: 13px;}
+
+    div[id='addressEffect']>a>img{width: 20px;}
+
+    a[id='addAddress']{font-size: 13px;}
+    
+    a[id='addAddress']>img{width: 25px;}
+
     section[id='address']{flex-flow: row nowrap;}
     section[id='addressPart-1']{margin-left: 30px;/*Adress Part 1*/
     padding-right: 50px;}
@@ -308,6 +335,36 @@
     section[id='settings']{flex-flow: row nowrap;}
 
     section[id='settings_part1']{width: 50%;}
+
+    p[id='userdetails']{font-size: 14px;
+    font-family: MontserratMedium;}
+
+    p[id='userdetails']>span{font-size: 13px;}
+
+    a[id='settingEdit']{font-family: MontserratMedium;
+    font-size: 13px;}
+
+    a[id='settingEdit']{font-size: 13px;}
+
+    div[id='settingOption']>a{width: 150px;
+    font-size: 13px;}
+
+    a[id='settingEdit']>img{width: 15px;/*Each Account edit icon*/
+    height: 15px;}
+
+    div[id='settingOption']>a>img{width: 20px;/*Overall setting edit icon*/
+    height: 20px;}
+
+    a[id='close']{width: 28px;}
+
+    form[id='settingForm']>p>label{font-family: MontserratMedium;/*Account Setting label*/
+    font-size: 12px;}
+
+    form[id='settingForm']>p>input,form[id='settingForm']>p>select{font-size: 13px;}
+
+    form[id='settingForm']>input{width: 90%;
+    font-family: MontserratMedium;
+    font-size: 13px;}
 
     section[id='settings_part2']{display: none;/*Account Setting Part2*/
     flex-flow: column;
@@ -336,6 +393,22 @@
 
     div[id='mailUs']>form{width: 350px;}
 
+    p[id='comment']{font-size: 13px;}
+
+    div[id='mailUs']>form>input{height: 25px;}
+
+    p[id='submitComment']>input{padding: 10px 13px;}
+
+    div[id='developerInfo']>section>a>img{width: 150px;}
+
+    div[id='developerInfo']>section>div>p{font-size: 13px;}
+
+    div[id='developerInfo']>section>div>p>span{font-size: 12px;}
+
+    div[id='contacts']>a>img{width:25px;}
+    
+    div[id='right']{font-size: 13px;}
+
     div[id='footerThings']>div>p{font-size: 13px;}
     /*END FOOTER*/
 
@@ -343,7 +416,42 @@
 
     /*HISTORY*/
     section[id='history']>div:nth-of-type(2){justify-content: flex-start;}
+
+    p[id='checkoutDate']{font-size: 13px;}
+
+    p[id='statusSuccess'],p[id='statusFail'],p[id='statusProgress']{font-size: 13px;}
+
+    p[id='checkoutDate']{font-size: 13px;}
+
+    div[id='cartItems']{width: 160px;}
+
+    figure[id='itemPics']{width: 120px;}/*History Selected Item Figure*/
+
+    p[id='historyPrice']{font-family: MontserratMedium;/*History Total Price*/
+    font-size: 13px;}
+
     /*END HISTORY*/
+
+
+    /*CHECKOUT*/
+    section[id='ConfirmCheckOut']>section{width: 70%;}
+
+    section[id='ConfirmCheckOut']>section>p{font-family: MontserratMedium;
+    font-size: 13px;}
+
+    div[id='cartDetails']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+
+    div[id='station']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+
+    a[id='confirm']{font-family: MontserratMedium;
+    font-size: 14px;
+    width: 90%;}
+
+    div[id='checkoutNotice']>p{font-family: MontserratRegular;
+    font-size: 13px;}
+    /*CHECKOUT*/
 
     
 
@@ -356,11 +464,45 @@
 
 
     /*STYLE THAT RESPOND TO SCRIPT ACTION*/
+    div[id='popContainer']{width:100px;}
+    
+    a[id='popOption']{font-size: 12px;}
+
     div[id='detailContainer']{width: 350px;}
 
     #OdetailContainer{width: 350px;}
 
+    img[id='closeView']{width: 25px;
+    margin: 3px 18px;}
+
+    p[id='productclass']{font-size: 13px;}
+
+    figure[id='productFigure']{width: 60%}
+
+    div[id='productDetail']{width: 80%;
+    margin-top: 10px;}
+
+    div[id='productDetail']>p{font-size: 13px;}
+
+    a[id='addToCart']{width: 80%;
+    height: 30px;}
+
+    div[id='addImgBox']{width: 30px;
+    height: 30px;}
+
+    p[id='addStatement']{font-size: 14px;}
+
+    div[id='notice']{font-size: 12px;}
+
+    div[id='dialogboxsuccess'],div[id='dialogboxerror']{font-size: 13px;}
+
     /*ADD ADDRESS*/
     form[id='addAdressForm'],form[id='mainAddAdressForm']{position: sticky;
-    top: 20px;}
+    top: 20px;
+    margin: 40px 0px 0px 30px;
+    width: 300px;}
+
+    a[id='addNewAddress']{font-size: 14px;}
+
+    form[id='addAdressForm']>input{font-size: 12px;}
 }
