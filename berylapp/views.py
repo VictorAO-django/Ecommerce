@@ -260,7 +260,7 @@ def saveItem(request,code):
     check = False
 
     if request.user.is_authenticated:
-        currentUser = User.objects.get(Username=request.user.username)
+        currentUser = User.objects.get(username=request.user.username)
         DETAIL = userDetail.objects.get(relation=currentUser)
         previousSave = DETAIL.Saved
 
@@ -376,7 +376,7 @@ def recentlyViewed(request):
             check = False
 
     if check:
-        DETAIL = userDetail.objects.get(Username = request.user.username)
+        DETAIL = userDetail.objects.get(username = request.user.username)
         previousSave = DETAIL.Saved
         context['saveditems'] = previousSave
 
